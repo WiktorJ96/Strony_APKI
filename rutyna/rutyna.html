@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dziennik Pielęgnacji Włosów</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.10.1/main.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@5.10.1/main.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="rutyna.css">
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-800 text-center text-gray-800 mb-6">Dziennik Pielęgnacji Włosów</h1>
+
+        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="mycie-tab" data-toggle="tab" href="#mycie" role="tab"
+                    aria-controls="mycie" aria-selected="true">Mycie</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="odzywianie-tab" data-toggle="tab" href="#odzywianie" role="tab"
+                    aria-controls="odzywianie" aria-selected="false">Odżywianie</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="stylizacja-tab" data-toggle="tab" href="#stylizacja" role="tab"
+                    aria-controls="stylizacja" aria-selected="false">Stylizacja</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="zabieg-tab" data-toggle="tab" href="#zabieg" role="tab" aria-controls="zabieg"
+                    aria-selected="false">Zabieg</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="olejowanie-tab" data-toggle="tab" href="#olejowanie" role="tab"
+                    aria-controls="olejowanie" aria-selected="false">Olejowanie</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="inne-tab" data-toggle="tab" href="#inne" role="tab" aria-controls="inne"
+                    aria-selected="false">Inne</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="produkty-tab" data-toggle="tab" href="#produkty" role="tab" aria-controls="produkty"
+                    aria-selected="false">Produkty</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="kalendarz-tab" data-toggle="tab" href="#kalendarz" role="tab" aria-controls="kalendarz"
+                    aria-selected="false">Kalendarz</a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+
+                                                                    <!-- MYCIE -->
+            <div class="tab-pane fade show active" id="mycie" role="tabpanel" aria-labelledby="mycie-tab">
+                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Mycie skóry głowy - Informacje i wskazówki</h1>
+                    <p class="mb-4">Mycie skóry głowy jest kluczowym elementem pielęgnacji włosów, ponieważ pomaga utrzymać czystość,
+                        zdrowie i równowagę skóry, a także wspiera zdrowy wzrost włosów. Oto szczegółowy przewodnik na temat mycia skóry
+                        głowy:</p>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Czego najlepiej używać do mycia skóry głowy?</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Szampony:</strong>
+                            <ul class="list-disc pl-5 mb-4">
+                                <li><strong>Delikatne szampony bez siarczanów(SLS):</strong> Szampony bez siarczanów są łagodniejsze dla
+                                    skóry głowy i włosów, nie przesuszają ich i są odpowiednie dla większości typów włosów.</li>
+                                <li><strong>Szampony z naturalnymi składnikami:</strong> Wybieraj szampony zawierające naturalne
+                                    składniki, takie jak olejek arganowy, aloes, czy ekstrakt z rumianku, które mogą łagodzić i nawilżać
+                                    skórę głowy.</li>
+                                <li><strong>Szampony lecznicze:</strong> Dla osób z problemami skóry głowy, takimi jak łupież,
+                                    łojotokowe zapalenie skóry czy łuszczyca, mogą być wskazane szampony lecznicze zawierające
+                                    substancje aktywne, takie jak ketokonazol, pirytionian cynku lub siarkę.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Odżywki i maski:</strong>
+                            <ul class="list-disc pl-5 mb-4">
+                                <li><strong>Odżywki nawilżające:</strong> Stosowanie odżywek nawilżających po każdym myciu może pomóc
+                                    utrzymać włosy w dobrej kondycji i zapobiec ich przesuszeniu.</li>
+                                <li><strong>Maski do włosów:</strong> Regularne stosowanie masek do włosów, zwłaszcza tych zawierających
+                                    oleje i proteiny, może wspierać zdrowie skóry głowy i włosów.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Ziołowe płukanki:</strong>
+                            <ul class="list-disc pl-5 mb-4">
+                                <li><strong>Płukanka z pokrzywy:</strong> Może wzmacniać włosy i stymulować ich wzrost.</li>
+                                <li><strong>Płukanka z rumianku:</strong> Działa kojąco na skórę głowy, pomaga w przypadku podrażnień.
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Jak często myć skórę głowy?</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Typ skóry i włosów:</strong>
+                            <ul class="list-disc pl-5 mb-4">
+                                <li><strong>Normalne włosy i skóra głowy:</strong> 2-3 razy w tygodniu.</li>
+                                <li><strong>Tłuste włosy i skóra głowy:</strong> Codziennie lub co drugi dzień, aby kontrolować nadmiar
+                                    sebum.</li>
+                                <li><strong>Suche i zniszczone włosy:</strong> 1-2 razy w tygodniu, aby nie przesuszyć włosów i skóry
+                                    głowy.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Styl życia i aktywność fizyczna:</strong>
+                            <ul class="list-disc pl-5 mb-4">
+                                <li><strong>Aktywność fizyczna:</strong> Osoby prowadzące aktywny tryb życia, uprawiające sport mogą myć
+                                    włosy częściej, aby usunąć pot i zanieczyszczenia.</li>
+                                <li><strong>Środowisko:</strong> Osoby żyjące w zanieczyszczonym środowisku mogą potrzebować częstszego
+                                    mycia włosów.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Ogólne wskazówki dotyczące mycia skóry głowy</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Technika mycia:</strong>
+                            <ul class="list-disc pl-5 mb-4">
+                                <li><strong>Ciepła woda:</strong> Używaj letniej wody, aby nie przesuszyć skóry głowy. Unikaj gorącej
+                                    wody, która może uszkodzić włosy i skórę.</li>
+                                <li><strong>Delikatne masowanie:</strong> Delikatnie masuj skórę głowy opuszkami palców przez kilka
+                                    minut, aby poprawić krążenie i dokładnie oczyścić skórę.</li>
+                                <li><strong>Dokładne spłukiwanie:</strong> Upewnij się, że dokładnie spłukałeś szampon i odżywkę, aby
+                                    uniknąć podrażnień i nagromadzenia się produktów na skórze głowy.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Produkty dodatkowe:</strong>
+                            <ul class="list-disc pl-5 mb-4">
+                                <li><strong>Peelingi do skóry głowy:</strong> Stosuj peelingi do skóry głowy raz na tydzień lub dwa, aby
+                                    usunąć martwe komórki skóry i zanieczyszczenia.</li>
+                                <li><strong>Toniki i serum:</strong> Po myciu można używać toników i serum, które nawilżają skórę głowy
+                                    i wspierają zdrowy wzrost włosów.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Własny szampon do włosów</h2>
+                    <p class="mb-4">Tworzenie własnego szamponu do włosów może być satysfakcjonującym projektem, który pozwala na pełną
+                        kontrolę nad składnikami. Oto podstawowy przepis na domowy szampon, który jest delikatny dla skóry głowy i włosów:
+                    </p>
+                    
+                    <h3 class="text-xl font-500 text-gray-700 mt-6 mb-2">Składniki</h3>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li>1/4 szklanki płynnej kastylijskiej mydła</li>
+                        <li>1/4 szklanki destylowanej wody</li>
+                        <li>1/2 łyżeczki oleju roślinnego (np. olej jojoba, oliwa z oliwek, olej z pestek winogron)</li>
+                        <li>10-15 kropli olejku eterycznego (opcjonalnie, np. olejek lawendowy, rozmarynowy, miętowy)</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-500 text-gray-700 mt-6 mb-2">Instrukcje</h3>
+                    <ol class="list-decimal pl-5 mb-4">
+                        <li><strong>Zmieszaj składniki:</strong> Wlej kastylijskie mydło do szklanej lub plastikowej butelki. Dodaj
+                            destylowaną wodę, olej roślinny i olejek eteryczny. Delikatnie wstrząśnij butelką, aby wszystkie składniki się
+                            połączyły.</li>
+                        <li><strong>Używanie szamponu:</strong> Niewielką ilość szamponu wmasuj w mokre włosy, a następnie spłucz dokładnie
+                            ciepłą wodą.</li>
+                        <li><strong>Przechowywanie:</strong> Przechowuj szampon w szczelnie zamkniętej butelce. Przed każdym użyciem
+                            wstrząśnij, aby składniki się wymieszały.</li>
+                    </ol>
+                    
+                    <h3 class="text-xl font-500 text-gray-700 mt-6 mb-2">Dodatkowe wskazówki</h3>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li>Możesz eksperymentować z różnymi olejkami eterycznymi, aby uzyskać ulubiony zapach i dodatkowe korzyści dla
+                            skóry głowy.</li>
+                        <li>Jeśli masz suche włosy, możesz dodać więcej oleju roślinnego do mieszanki.</li>
+                        <li>Aby uzyskać bardziej nawilżający szampon, dodaj 1-2 łyżki żelu z aloesu.</li>
+                    </ul>
+                    
+                </div>
+            </div>
+
+                                                                    <!-- ODZYWIANIE -->
+            <div class="tab-pane fade" id="odzywianie" role="tabpanel" aria-labelledby="odzywianie-tab">
+                <h2 class="text-2xl font-500 mb-4">Odżywianie</h2>
+                <p>Content related to Odżywianie...</p>
+            </div>
+
+                                                                    <!-- STYLIZACJA -->
+            <div class="tab-pane fade" id="stylizacja" role="tabpanel" aria-labelledby="stylizacja-tab">
+                <h2 class="text-2xl font-500 mb-4">Stylizacja</h2>
+                <p>Content related to Stylizacja...</p>
+            </div>
+
+                                                                    <!-- ZABIEG -->
+            <div class="tab-pane fade" id="zabieg" role="tabpanel" aria-labelledby="zabieg-tab">
+                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Iglowanie Skóry Głowy za Pomocą Dermapena</h1>
+                    <p class="mb-4">Znane również jako mikronakłuwanie, może być skuteczną metodą stymulacji wzrostu włosów i poprawy
+                        zdrowia skóry głowy. Oto szczegółowy przewodnik, jak najlepiej stosować dermapen i w jakich odstępach czasu:</p>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Przygotowanie</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Sterylizacja:</strong> Upewnij się, że dermapen i igły są sterylne, aby uniknąć infekcji. Zawsze
+                            używaj jednorazowych igieł.</li>
+                        <li><strong>Czysta skóra głowy:</strong> Przed zabiegiem dokładnie umyj skórę głowy, aby usunąć wszelkie
+                            zanieczyszczenia.</li>
+                        <li><strong>Znieczulenie miejscowe:</strong> Jeśli masz niski próg bólu, możesz użyć kremu znieczulającego na
+                            skórę głowy przed rozpoczęciem zabiegu.</li>
+                    </ul>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Procedura</h2>
+                    <ol class="list-decimal pl-5 mb-4">
+                        <li><strong>Ustawienie dermapena:</strong> Ustaw długość igieł na około 0,25 mm do 1,5 mm, w zależności od
+                            obszaru skóry głowy i poziomu komfortu. Zazwyczaj dla skóry głowy stosuje się długości od 0,5 mm do 1,5 mm.
+                        </li>
+                        <li><strong>Nakłuwanie:</strong> Delikatnie przesuwaj dermapen po skórze głowy, tworząc równomierne linie w
+                            różnych kierunkach (horyzontalnie, wertykalnie i ukośnie). Upewnij się, że każda część skóry jest
+                            jednokrotnie pokryta.</li>
+                        <li><strong>Intensywność:</strong> Zabieg powinien trwać około 10-20 minut, w zależności od wielkości obszaru.
+                        </li>
+                    </ol>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Po zabiegu</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Unikaj mycia:</strong> Nie myj głowy przez co najmniej 24 godziny po zabiegu.</li>
+                        <li><strong>Pielęgnacja:</strong> Stosuj delikatne produkty pielęgnacyjne, unikając drażniących składników.</li>
+                        <li><strong>Unikaj słońca:</strong> Chron skórę głowy przed bezpośrednim działaniem promieni słonecznych.</li>
+                    </ul>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Odstępy czasowe</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Pierwszy miesiąc:</strong> Zabiegi można przeprowadzać co 7-14 dni, w zależności od tolerancji
+                            skóry.</li>
+                        <li><strong>Kolejne miesiące:</strong> Po pierwszym miesiącu można zmniejszyć częstotliwość do raz na miesiąc,
+                            aby utrzymać efekty i wspierać zdrowy wzrost włosów.</li>
+                    </ul>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Uwagi dodatkowe</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Konsultacja z profesjonalistą:</strong> Zawsze warto skonsultować się z dermatologiem lub
+                            trychologiem przed rozpoczęciem jakiejkolwiek procedury mikronakłuwania, aby upewnić się, że jest ona
+                            odpowiednia dla Twojej skóry głowy.</li>
+                        <li><strong>Monitorowanie efektów:</strong> Regularnie monitoruj stan skóry głowy i włosów, aby ocenić
+                            skuteczność zabiegu i dostosować długość igieł oraz częstotliwość zabiegów, jeśli to konieczne.</li>
+                    </ul>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Korzyści</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Poprawa krążenia:</strong> Mikronakłuwanie zwiększa krążenie krwi w skórze głowy, co może wspierać
+                            wzrost włosów.</li>
+                        <li><strong>Stymulacja kolagenu:</strong> Zabieg wspomaga produkcję kolagenu, co może poprawić zdrowie skóry
+                            głowy.</li>
+                    </ul>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Potencjalne ryzyko</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Podrażnienia:</strong> Może wystąpić podrażnienie lub zaczerwienienie skóry, które zwykle ustępuje w
+                            ciągu kilku dni.</li>
+                        <li><strong>Infekcje:</strong> Niezachowanie odpowiednich standardów higieny może prowadzić do infekcji.</li>
+                    </ul>
+                
+                    <p class="mt-8">Stosowanie dermapena w pielęgnacji skóry głowy wymaga odpowiedniej techniki i regularności, aby
+                        uzyskać optymalne rezultaty. Regularne monitorowanie i dostosowywanie zabiegów pomoże osiągnąć najlepsze efekty
+                        w stymulacji wzrostu włosów.</p>
+                </div>
+            </div>
+
+                                                                    <!-- OLEJOWANIE -->
+            <div class="tab-pane fade" id="olejowanie" role="tabpanel" aria-labelledby="olejowanie-tab">
+                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Olejowanie włosów - Poprawa kondycji i wzrost</h1>
+                    <p class="mb-4">Olejowanie włosów to jedna z najstarszych i najbardziej efektywnych metod pielęgnacji włosów.
+                        Stosowanie odpowiednich olejów może poprawić ich kondycję, nawilżenie, blask i wspomóc wzrost. Oto szczegółowy
+                        przewodnik na temat olejowania włosów:</p>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Jak olejować włosy?</h2>
+                    <ol class="list-decimal pl-5 mb-4">
+                        <li><strong>Wybór oleju:</strong>
+                            <ul class="list-disc pl-5 mb-4">
+                                <li><strong>Olej kokosowy:</strong> Świetny do głębokiego nawilżania, szczególnie dla suchych i
+                                    zniszczonych włosów.</li>
+                                <li><strong>Olej rycynowy:</strong> Stymuluje wzrost włosów, zagęszcza i wzmacnia.</li>
+                                <li><strong>Olej arganowy:</strong> Odżywia, nadaje blasku i działa przeciwstarzeniowo.</li>
+                                <li><strong>Olej jojoba:</strong> Reguluje produkcję sebum, nawilża i wzmacnia.</li>
+                                <li><strong>Olej migdałowy:</strong> Lekki, idealny do nawilżania i zmiękczania włosów.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Sposób aplikacji:</strong>
+                            <ul class="list-disc pl-5 mb-4">
+                                <li><strong>Rozczesanie włosów:</strong> Przed nałożeniem oleju rozczesz włosy, aby uniknąć plątania.
+                                </li>
+                                <li><strong>Podgrzanie oleju:</strong> Lekko podgrzej olej (nie powinien być gorący), aby łatwiej się
+                                    wchłaniał.</li>
+                                <li><strong>Aplikacja:</strong> Nałóż olej na skórę głowy i włosy, masując delikatnie opuszkami palców.
+                                    Rozprowadź olej na całej długości włosów, szczególnie na końcówki.</li>
+                                <li><strong>Czas trzymania:</strong> Pozostaw olej na włosach przez co najmniej 1 godzinę, ale najlepiej
+                                    na całą noc.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Zmywanie oleju:</strong>
+                            <ul class="list-disc pl-5 mb-4">
+                                <li><strong>Szampon:</strong> Użyj delikatnego szamponu bez siarczanów, aby dokładnie umyć włosy. Może
+                                    być konieczne dwukrotne mycie.</li>
+                                <li><strong>Odżywka:</strong> Nałóż odżywkę, aby dodatkowo nawilżyć i wygładzić włosy.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Czym olejować włosy?</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Naturalne oleje:</strong> Używaj czystych, nierafinowanych olejów, aby zapewnić maksymalne korzyści.
+                        </li>
+                        <li><strong>Mieszanki olejów:</strong> Możesz tworzyć mieszanki olejów, aby skorzystać z ich różnych
+                            właściwości.</li>
+                        <li><strong>Gotowe produkty:</strong> Istnieją gotowe mieszanki olejowe dostępne w sklepach, które są specjalnie
+                            skomponowane do różnych typów włosów.</li>
+                    </ul>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Jak często olejować włosy?</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Suche i zniszczone włosy:</strong> 2-3 razy w tygodniu.</li>
+                        <li><strong>Normalne włosy:</strong> 1-2 razy w tygodniu.</li>
+                        <li><strong>Tłuste włosy:</strong> 1 raz w tygodniu lub rzadziej, aby nie obciążać włosów.</li>
+                    </ul>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Ogólne informacje i wskazówki</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Regularność:</strong> Kluczem do sukcesu jest regularność. Nawet najlepszy olej nie zadziała, jeśli
+                            będzie stosowany sporadycznie.</li>
+                        <li><strong>Delikatność:</strong> Bądź delikatny podczas aplikacji i zmywania oleju, aby nie uszkodzić włosów.
+                        </li>
+                        <li><strong>Kombinacja z innymi metodami:</strong> Połącz olejowanie z innymi metodami pielęgnacji, takimi jak
+                            maseczki, odżywki czy zdrowa dieta, aby uzyskać najlepsze efekty.</li>
+                        <li><strong>Dieta:</strong> Pamiętaj, że zdrowa dieta bogata w witaminy i minerały również wpływa na kondycję
+                            włosów.</li>
+                        <li><strong>Unikanie nadmiernego stylizowania:</strong> Ogranicz użycie suszarek, prostownic i lokówek, które
+                            mogą wysuszać i uszkadzać włosy.</li>
+                    </ul>
+                
+                    <p class="mt-8">Olejowanie włosów to naturalna i skuteczna metoda poprawy ich kondycji i wspomagania wzrostu.
+                        Regularne stosowanie odpowiednich olejów, zgodnie z powyższymi wskazówkami, przyniesie zauważalne efekty w
+                        postaci zdrowszych, mocniejszych i bardziej lśniących włosów.</p>
+                </div>
+            </div>
+
+                                                            <!-- INNE -->
+            <div class="tab-pane fade" id="inne" role="tabpanel" aria-labelledby="inne-tab">
+                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Naświetlanie światłem podczerwonym - Wzrost włosów
+                    </h1>
+                    <p class="mb-4">Naświetlanie światłem podczerwonym, znane również jako terapia światłem niskiej intensywności
+                        (LLLT), może stymulować mieszki włosowe i poprawiać krążenie krwi w skórze głowy. Oto szczegółowy przewodnik,
+                        jak stosować tę metodę:</p>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Krok 1: Przygotowanie</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Wybór urządzenia:</strong> Wybierz odpowiednie urządzenie do naświetlania światłem podczerwonym,
+                            takie jak specjalne czapki, opaski, grzebienie laserowe lub przenośne urządzenia ręczne.</li>
+                        <li><strong>Czystość skóry:</strong> Upewnij się, że skóra głowy jest czysta. Przed naświetlaniem umyj włosy i
+                            skórę głowy, aby usunąć wszelkie zanieczyszczenia i produkty do stylizacji.</li>
+                    </ul>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Krok 2: Naświetlanie</h2>
+                    <ol class="list-decimal pl-5 mb-4">
+                        <li><strong>Instrukcje producenta:</strong> Postępuj zgodnie z instrukcjami producenta dotyczącymi użytkowania
+                            urządzenia. Różne urządzenia mogą mieć różne specyfikacje dotyczące czasu i częstotliwości stosowania.</li>
+                        <li><strong>Czas naświetlania:</strong> Zazwyczaj sesje trwają od 10 do 30 minut. Stosuj się do zalecanego czasu
+                            naświetlania, aby uniknąć nadmiernego wystawienia skóry na działanie światła.</li>
+                        <li><strong>Częstotliwość:</strong> Standardowe zalecenia to 3-4 razy w tygodniu. Ważne jest, aby być
+                            konsekwentnym w stosowaniu terapii, ponieważ efekty mogą być widoczne dopiero po kilku tygodniach
+                            regularnego używania.</li>
+                        <li><strong>Odległość:</strong> Trzymaj urządzenie zgodnie z zaleceniami producenta, zwykle kilka centymetrów od
+                            skóry głowy. Niektóre urządzenia mogą być noszone bezpośrednio na głowie, jak czapki laserowe.</li>
+                    </ol>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Krok 3: Po naświetlaniu</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Pielęgnacja skóry:</strong> Po zakończeniu sesji naświetlania nie ma potrzeby szczególnej
+                            pielęgnacji, ale możesz zastosować delikatny środek nawilżający, jeśli skóra głowy wydaje się sucha.</li>
+                        <li><strong>Unikanie dodatkowych podrażnień:</strong> Staraj się unikać stosowania agresywnych produktów do
+                            stylizacji lub innych zabiegów chemicznych na skórze głowy w dniu naświetlania.</li>
+                    </ul>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Krok 4: Monitorowanie efektów</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Cierpliwość i regularność:</strong> Wyniki mogą pojawić się po kilku miesiącach regularnego
+                            stosowania. Ważne jest, aby być cierpliwym i systematycznym.</li>
+                        <li><strong>Dokumentacja postępów:</strong> Możesz robić zdjęcia przed rozpoczęciem terapii i co kilka tygodni,
+                            aby monitorować postępy.</li>
+                    </ul>
+                
+                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Środki ostrożności</h2>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li><strong>Konsultacja z lekarzem:</strong> Zawsze warto skonsultować się z dermatologiem lub trychologiem
+                            przed rozpoczęciem terapii, zwłaszcza jeśli masz jakiekolwiek schorzenia skóry głowy lub przyjmujesz leki.
+                        </li>
+                        <li><strong>Unikanie oczu:</strong> Nigdy nie kieruj światła bezpośrednio na oczy, ponieważ może to prowadzić do
+                            uszkodzenia wzroku.</li>
+                    </ul>
+                
+                    <p class="mt-8">Naświetlanie światłem podczerwonym może być skuteczną metodą wspomagającą wzrost włosów, jednak
+                        kluczem do sukcesu jest regularne i konsekwentne stosowanie terapii zgodnie z zaleceniami producenta i
+                        specjalistów.</p>
+                </div>
+            </div>
+                                                                 <!-- PRODUKTY -->
+            <div class="tab-pane fade" id="produkty" role="tabpanel" aria-labelledby="produkty-tab">
+
+                <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Szampony</h2>
+                <a href="https://lyko.com/no/la-roche-posay/la-roche-posay-kerium-extra-gentle-shampoo-400-ml?gad_source=1&gclid=CjwKCAjw-O6zBhASEiwAOHeGxaod5t4M74XREvBdi9R5eFbecOQsKS88oYWsQvRMizfB5tMznnWJHxoCbb8QAvD_BwE"
+                    style="display: inline;">
+                    <p class="mt-8" style="display: inline;">La Roche-Posay Kerium</p>
+                </a>
+                <p style="display: inline;">- szampon bez SLS i SLES</p>
+                <br>
+                <a href="https://lyko.com/no/paul-mitchell/paul-mitchell-awg-nourishing-shampoo-250ml"
+                    style="display: inline;">
+                    <p class="mt-8" style="display: inline;">Paul Mitchell
+                    Awapuhi Wild Ginger</p>
+                </a>
+                <p style="display: inline;">- ten szampon jest wolny od siarczanów, SLS, SLES i ALS. Delikatnie oczyszcza, chroni kolor i naprawia suche, zniszczone
+                włosy. Zawiera składniki takie jak imbir awapuhi i keratyna, które wzmacniają i nawilżają włosy, pozostawiając je
+                miękkie i lśniące.</p>
+                <br>
+                <a href="https://lyko.com/no/paul-mitchell/paul-mitchell-awg-hydrasoft-shampoo-250ml"
+                    style="display: inline;">
+                    <p class="mt-8" style="display: inline;">Paul Mitchell
+                    Awapuhi Wild Ginger</p>
+                </a>
+                <p style="display: inline;">- ten hydratyzujący szampon również jest wolny od SLS, SLES i ALS. Delikatnie oczyszcza włosy, jednocześnie nawilżając je
+                i dodając im blasku. Zawiera mieszankę aminokwasów, roślinne proteiny i odżywcze oleje, które głęboko nawilżają włosy.</p>
+                <br>
+                <a href="https://lyko.com/no/maria-nila/maria-nila-palett-shampoo-true-soft" style="display: inline;">
+                    <p class="mt-8" style="display: inline;">Maria Nila
+                    True Soft</p>
+                </a>
+                <p style="display: inline;">- szampon bez siarczanów, stworzony specjalnie do włosów suchych i puszących się. Zawiera olej arganowy, który nawilża i
+                wzmacnia włosy, nadając im miękkość i blask. Produkt jest również wegański i przyjazny dla środowiska.</p>
+
+                <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Wcierki</h2>
+                <a href="https://lyko.com/no/copenhagen-grooming/copenhagen-grooming-the-hair-activator-100-ml"
+                    style="display: inline;">
+                    <p class="mt-8" style="display: inline;">Copenhagen Grooming
+                    Hair</p>
+                </a>
+                <p style="display: inline;">- stymuluje wzrost włosów poprzez poprawę krążenia i aktywację mieszków włosowych</p>
+                <br>
+                <a href="https://lyko.com/no/hjartligt/hjartligt-hair-growth-elixir-50-ml"
+                    style="display: inline;">
+                    <p class="mt-8" style="display: inline;">Hjärtligt</p>
+                </a>
+                <p style="display: inline;">- badania wykazują wzrost liczby włosów o 13 500 i zwiększenie gęstości o 52%</p>
+                <br>
+                <a href="https://lyko.com/no/the-ordinary/the-ordinary-multi-peptide-serum-for-hai" style="display: inline;">
+                    <p class="mt-8" style="display: inline;">The Ordinary
+                    Hair</p>
+                </a>
+                <p style="display: inline;">- serum na noc na bazie peptydów, które wspiera zdrowy wzrost włosów, zwiększając ich gęstość i grubość</p>
+
+                <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Odżywki&Maski</h2>
+                <a href="https://lyko.com/no/kerastase/k-rastase-fondant-renforcateur-200ml" style="display: inline;">
+                    <p class="mt-8" style="display: inline;">Kérastase
+                    Genesis</p>
+                </a>
+                <p style="display: inline;">- Ta odżywka wzmacniająca jest idealna dla osób z problemem wypadających włosów. Zawiera składniki takie jak ekstrakt z
+                imbiru i arginina, które wzmacniają włosy od nasady aż po końce, zapobiegając ich łamliwości. Nie zawiera SLS i SLES.</p>
+                <br>
+                <a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-true-soft" style="display: inline;">
+                    <p class="mt-8" style="display: inline;">Maria Nila</p>
+                </a>
+                <p style="display: inline;">- ta odżywka bez siarczanów została stworzona specjalnie do włosów suchych i puszących się. Zawiera olej arganowy, który
+                nawilża i wzmacnia włosy, nadając im miękkość i blask.</p>
+                <br>
+                <a href="https://lyko.com/no/paul-mitchell/paul-mitchell-awg-hydrasoft-conditioner-1000ml" style="display: inline;">
+                    <p class="mt-8" style="display: inline;">Paul Mitchell
+                    Awapuhi Wild Ginger</p>
+                </a>
+                <p style="display: inline;">- ta odżywka bez SLS i SLES delikatnie odżywia włosy, chroniąc kolor i naprawiając suche, zniszczone włosy. Formuła
+                wzbogacona imbirem awapuhi i keratyną wzmacnia włosy, pozostawiając je miękkie i lśniące.</p>
+
+                <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Inne</h2>
+                <a href="https://www.naturalbeauty.no/products/dr-pen-ultima-m8-a6s-nano-nal">
+                    <p class="mt-8">Igła Dr.pen Ultima M8 i A6s</p>
+                </a>
+
+            </div>
+                                                                
+                                                                <!-- KALENDARZ -->
+            <div class="tab-pane fade" id="kalendarz" role="tabpanel" aria-labelledby="kalendarz-tab">
+                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Kalendarz Czynności</h1>
+                    <div class="calendar-container">
+                        <div id="calendar"></div>
+                    </div>
+                    <div id="events-list"></div>
+                    <div class="button-container" style="text-align: center; margin-top: 20px;">
+                        <button id="saveButton"></button>
+                        <button id="exportButton" class="btn-custom">Eksportuj wydarzenia</button>
+                        <div class="file-input-wrapper">
+                            <button class="btn-custom">Wybierz plik</button>
+                            <input type="file" id="importFile" accept=".csv">
+                        </div>
+                        <button id="importButton" class="btn-custom">Importuj wydarzenia</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+            
+    
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- FullCalendar -->
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.10.1/main.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@5.10.1/main.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@5.10.1/main.global.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
+<script src="rutyna.js"></script>
+</body>
+
+</html>

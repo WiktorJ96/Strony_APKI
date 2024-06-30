@@ -1,0 +1,230 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    /* background-color: #f5f5f5; */
+    background: url(./tlo.webp);
+    background-size: cover;
+}
+
+.tab-content>.tab-pane:not(.active) {
+    display: none;
+}
+
+.calendar-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#calendar {
+    width: 100%;
+    height: auto;
+    font-size: 14px;
+}
+
+.fc-view-harness {
+    height: auto !important;
+}
+
+.fc .fc-scrollgrid-liquid {
+    border: none;
+}
+
+.fc .fc-scrollgrid,
+.fc .fc-scrollgrid table {
+    width: 100% !important;
+}
+
+.fc .fc-daygrid-body {
+    width: 100% !important;
+}
+
+.fc .fc-daygrid-body table {
+    width: 100% !important;
+}
+
+.fc .fc-daygrid-day-frame {
+    height: 100px !important;
+    /* Stała wysokość komórek */
+    overflow: hidden;
+    /* Ukryj nadmiar tekstu */
+}
+
+.fc .fc-daygrid-day-events {
+    margin-bottom: 0 !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.fc-event {
+    font-size: 0.8em;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fc-daygrid-more-link {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.fc .fc-daygrid-day-bottom {
+    padding: 0 !important;
+}
+
+.fc-daygrid-day-frame {
+    height: 100px;
+    width: 50px;
+}
+
+.tooltip {
+    position: absolute;
+    z-index: 1070;
+    display: block;
+    visibility: visible;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    white-space: normal;
+    background-color: #000;
+    border-radius: 0.25rem;
+    opacity: 0.9;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.btn-custom {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+}
+
+.file-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.file-input-wrapper input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+
+    .btn-custom,
+    .file-input-wrapper {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #calendar {
+        font-size: 12px;
+    }
+
+    .fc .fc-toolbar {
+        flex-direction: column;
+    }
+
+    .fc .fc-toolbar-title {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins', sans-serif;
+    color: #2c3e50;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.nav-tabs .nav-link {
+    color: #34495e;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link.active {
+    color: #e74c3c;
+    border-bottom: 2px solid #e74c3c;
+}
+
+.tab-content {
+    background-color: #fff;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.btn-custom {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+}
