@@ -241,6 +241,32 @@ h6 a:hover {
     cursor: pointer;
 }
 
+.price_editBtn {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.price_editBtn p {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.edit-btn {
+    padding: 2px 5px;
+    font-size: 0.8em;
+}
+
+    .order-info {
+  margin-left: 10px;
+  font-size: 0.9em;
+  color: #666;
+  white-space: nowrap;
+  max-width: 500px; 
+  display: inline-block;
+  vertical-align: middle;
+}
+
 @media (max-width: 480px) {
 
     .btn-custom,

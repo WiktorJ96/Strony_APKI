@@ -189,4 +189,159 @@ document.addEventListener('DOMContentLoaded', function () {
                         reader.readAsText(file);
                     }
                 }
-            });
+});
+            
+let db;
+const dbName = "SupplementsDB";
+
+const request = indexedDB.open(dbName, 1);
+
+request.onerror = (event) => {
+  console.error("Błąd otwarcia bazy IndexedDB:", event.target.error);
+};
+
+request.onsuccess = (event) => {
+  db = event.target.result;
+  console.log("Baza danych otwarta pomyślnie");
+  loadAllSupplements();
+};
+
+request.onupgradeneeded = (event) => {
+  db = event.target.result;
+  const objectStore = db.createObjectStore("orders", { keyPath: "id" });
+};
+
+function saveOrder(id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold) {
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(["orders"], "readwrite");
+    const objectStore = transaction.objectStore("orders");
+    const request = objectStore.put({ id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold });
+    request.onerror = (event) => {
+      reject("Błąd zapisu: " + event.target.error);
+    };
+    request.onsuccess = (event) => {
+      resolve("Zapisano pomyślnie");
+    };
+  });
+}
+
+function getOrder(id) {
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(["orders"], "readonly");
+    const objectStore = transaction.objectStore("orders");
+    const request = objectStore.get(id);
+    request.onerror = (event) => {
+      reject("Błąd odczytu: " + event.target.error);
+    };
+    request.onsuccess = (event) => {
+      resolve(request.result);
+    };
+  });
+}
+
+function updateSupplementInfo(id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold) {
+  let infoElement = $(`button[data-id="${id}"]`).siblings('.order-info');
+  if (infoElement.length === 0) {
+    infoElement = $('<span class="order-info"></span>').insertAfter(`button[data-id="${id}"]`);
+  }
+  const daysSupply = Math.floor(quantity / dailyDosage);
+  const nextOrderDate = new Date(orderDate);
+  nextOrderDate.setDate(nextOrderDate.getDate() + daysSupply - reorderThreshold);
+  const today = new Date();
+  const daysLeft = Math.ceil((nextOrderDate - today) / (1000 * 60 * 60 * 24));
+
+  infoElement.text(`Zamówiono: ${quantity} szt. ${new Date(orderDate).toLocaleDateString()} | Następne: ${nextOrderDate.toLocaleDateString()} | Pozostało: ${daysLeft} dni`);
+}
+
+function loadAllSupplements() {
+  const transaction = db.transaction(["orders"], "readonly");
+  const objectStore = transaction.objectStore("orders");
+  const request = objectStore.openCursor();
+
+  request.onsuccess = (event) => {
+    const cursor = event.target.result;
+    if (cursor) {
+      updateSupplementInfo(
+        cursor.value.id,
+        cursor.value.supplementName, 
+        cursor.value.quantity, 
+        cursor.value.orderDate, 
+        cursor.value.dailyDosage, 
+        cursor.value.reorderThreshold
+      );
+      cursor.continue();
+    }
+  };
+}
+
+function updateOrderPredictions() {
+  const quantity = parseInt($('#quantity').val()) || 0;
+  const orderDate = new Date($('#orderDate').val());
+  const dailyDosage = parseInt($('#dailyDosage').val()) || 1;
+  const reorderThreshold = parseInt($('#reorderThreshold').val()) || 0;
+
+  if (quantity && orderDate && dailyDosage) {
+    const daysSupply = Math.floor(quantity / dailyDosage);
+    const nextOrderDate = new Date(orderDate);
+    nextOrderDate.setDate(nextOrderDate.getDate() + daysSupply - reorderThreshold);
+
+    const today = new Date();
+    const daysLeft = Math.ceil((nextOrderDate - today) / (1000 * 60 * 60 * 24));
+
+    $('#nextOrderDate').text(nextOrderDate.toLocaleDateString());
+    $('#daysLeft').text(daysLeft);
+  } else {
+    $('#nextOrderDate').text('Brak danych');
+    $('#daysLeft').text('Brak danych');
+  }
+}
+
+$(document).ready(function() {
+  $('.edit-btn').on('click', function() {
+    var id = $(this).data('id');
+    var supplementName = $(this).data('supplement');
+    $('#supplementName').val(supplementName);
+    $('#editModalLabel').text('Edytuj zamówienie: ' + supplementName);
+    
+    getOrder(id).then(savedData => {
+      if (savedData) {
+        $('#quantity').val(savedData.quantity);
+        $('#orderDate').val(savedData.orderDate);
+        $('#dailyDosage').val(savedData.dailyDosage || 1);
+        $('#reorderThreshold').val(savedData.reorderThreshold || 0);
+        updateOrderPredictions();
+      } else {
+        $('#quantity').val('');
+        $('#orderDate').val('');
+        $('#dailyDosage').val('1');
+        $('#reorderThreshold').val('0');
+        $('#nextOrderDate').text('Brak danych');
+        $('#daysLeft').text('Brak danych');
+      }
+      $('#editModal').modal('show');
+    }).catch(error => {
+      console.error("Błąd podczas wczytywania danych:", error);
+      $('#editModal').modal('show');
+    });
+  });
+
+  $('#quantity, #orderDate, #dailyDosage, #reorderThreshold').on('input', updateOrderPredictions);
+
+  $('#saveChanges').on('click', function() {
+    var id = $('.edit-btn.active').data('id');
+    var supplementName = $('#supplementName').val();
+    var quantity = $('#quantity').val();
+    var orderDate = $('#orderDate').val();
+    var dailyDosage = $('#dailyDosage').val();
+    var reorderThreshold = $('#reorderThreshold').val();
+    
+    saveOrder(id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold).then(() => {
+      console.log('Zapisano:', id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold);
+      updateSupplementInfo(id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold);
+      $('#editModal').modal('hide');
+    }).catch(error => {
+      console.error("Błąd podczas zapisywania:", error);
+      alert("Wystąpił błąd podczas zapisywania danych. Spróbuj ponownie.");
+    });
+  });
+});
