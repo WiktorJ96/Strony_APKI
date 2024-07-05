@@ -17,7 +17,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="rutyna.css">
 </head>
-
+<style>
+  .custom-list {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  .custom-list li {
+    margin-bottom: 8px;
+  }
+</style>
 <body class="bg-gray-100 text-gray-800">
 
     <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
@@ -33,8 +41,8 @@
                     aria-controls="odzywianie" aria-selected="false">Odżywianie</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="stylizacja-tab" data-toggle="tab" href="#stylizacja" role="tab"
-                    aria-controls="stylizacja" aria-selected="false">Stylizacja</a>
+                <a class="nav-link" id="wcierki-tab" data-toggle="tab" href="#wcierki" role="tab"
+                    aria-controls="wcierki" aria-selected="false">Wcierki</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="zabieg-tab" data-toggle="tab" href="#zabieg" role="tab" aria-controls="zabieg"
@@ -63,6 +71,11 @@
                                                                     <!-- MYCIE -->
             <div class="tab-pane fade show active" id="mycie" role="tabpanel" aria-labelledby="mycie-tab">
                 <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Moja rutyna</h1>
+                    <p class="mb-1">1. Szampon - <strong>Kundal</strong> <small>caffeine shampoo white musk</small> (pierwsze mycie)</p>
+                    <p class="mb-4">2. Szampon - <strong>La Roche-Posay Kerium</strong> (drugie mycie)</p>
+                    
+
                     <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Mycie skóry głowy - Informacje i wskazówki</h1>
                     <p class="mb-4">Mycie skóry głowy jest kluczowym elementem pielęgnacji włosów, ponieważ pomaga utrzymać czystość,
                         zdrowie i równowagę skóry, a także wspiera zdrowy wzrost włosów. Oto szczegółowy przewodnik na temat mycia skóry
@@ -80,14 +93,6 @@
                                 <li><strong>Szampony lecznicze:</strong> Dla osób z problemami skóry głowy, takimi jak łupież,
                                     łojotokowe zapalenie skóry czy łuszczyca, mogą być wskazane szampony lecznicze zawierające
                                     substancje aktywne, takie jak ketokonazol, pirytionian cynku lub siarkę.</li>
-                            </ul>
-                        </li>
-                        <li><strong>Odżywki i maski:</strong>
-                            <ul class="list-disc pl-5 mb-4">
-                                <li><strong>Odżywki nawilżające:</strong> Stosowanie odżywek nawilżających po każdym myciu może pomóc
-                                    utrzymać włosy w dobrej kondycji i zapobiec ich przesuszeniu.</li>
-                                <li><strong>Maski do włosów:</strong> Regularne stosowanie masek do włosów, zwłaszcza tych zawierających
-                                    oleje i proteiny, może wspierać zdrowie skóry głowy i włosów.</li>
                             </ul>
                         </li>
                         <li><strong>Ziołowe płukanki:</strong>
@@ -178,15 +183,72 @@
 
                                                                     <!-- ODZYWIANIE -->
             <div class="tab-pane fade" id="odzywianie" role="tabpanel" aria-labelledby="odzywianie-tab">
-                <h2 class="text-2xl font-500 mb-4">Odżywianie</h2>
-                <p>Content related to Odżywianie...</p>
+                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Moja rutyna</h1>
+                    <p class="mb-1">1. Odżywka - <strong>Kérastase Genesis</strong> (po myciu)</p>
+                      <div class="container">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p>Częstotliwość stosowania:</p>
+                          <ul class="custom-list mb-4">
+                            <li><small>Stosuj przy każdym myciu włosów, zazwyczaj 2-3 razy w tygodniu.</small></li>
+                            <li><small>W przypadku bardzo suchych lub zniszczonych włosów możesz używać po każdym myciu.</small></li>
+                            <li><small>Dla włosów normalnych lub lekko suchych wystarczy 1-2 razy w tygodniu.</small></li>
+                            <li><small>Unikaj codziennego stosowania, chyba że masz ekstremalnie suche włosy lub zaleci to fryzjer.</small></li>
+                            <li><small>Obserwuj reakcję swoich włosów - jeśli stają się ciężkie lub przetłuszczone, zmniejsz częstotliwość użycia.</small></li>
+                            <li><small>Dostosuj częstotliwość do typu i stanu Twoich włosów, obserwując ich reakcję na produkt.</small></li>
+                          </ul>
+                        </div>
+                        <div class="col-md-6">
+                          <p>Sposób użycia:</p>
+                          <ul class="custom-list mb-4">
+                            <li><small>Umyj włosy szamponem i delikatnie osusz ręcznikiem.</small></li>
+                            <li><small>Wyciśnij niewielką ilość odżywki na dłoń (ilość zależy od długości i gęstości włosów).</small></li>
+                            <li><small>Rozprowadź równomiernie odżywkę na wilgotnych włosach, skupiając się na długościach i końcówkach.</small></li>
+                            <li><small>Delikatnie wmasuj produkt we włosy.</small></li>
+                            <li><small>Pozostaw na 2-3 minuty, aby składniki mogły zadziałać.</small></li>
+                            <li><small>Dokładnie spłucz letnią wodą.</small></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+            </div>
             </div>
 
-                                                                    <!-- STYLIZACJA -->
-            <div class="tab-pane fade" id="stylizacja" role="tabpanel" aria-labelledby="stylizacja-tab">
-                <h2 class="text-2xl font-500 mb-4">Stylizacja</h2>
-                <p>Content related to Stylizacja...</p>
+                                                                    <!-- WCIERKI -->
+            <div class="tab-pane fade show active" id="wcierki" role="tabpanel" aria-labelledby="wcierki-tab">
+                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Moja rutyna</h1>
+                    <p class="mb-1">1. Wcierka - <strong>Hjärtligt</strong></p>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p>Częstotliwość stosowania:</p>
+                          <ul class="custom-list mb-4">
+                            <li><small>Stosuj 2-3 razy w tygodniu dla optymalnych rezultatów.</small></li>
+                            <li><small>W przypadku bardzo osłabionych włosów możesz używać codziennie przez krótki okres.</small></li>
+                            <li><small>Dla włosów normalnych wystarczy 1-2 razy w tygodniu.</small></li>
+                            <li><small>Unikaj nadmiernego stosowania, aby nie obciążać skóry głowy.</small></li>
+                            <li><small>Obserwuj reakcję swoich włosów - jeśli pojawi się podrażnienie, zmniejsz częstotliwość.</small></li>
+                            <li><small>Dostosuj częstotliwość do typu skóry głowy i stanu włosów.</small></li>
+                          </ul>
+                        </div>
+                        <div class="col-md-6">
+                          <p>Sposób użycia:</p>
+                          <ul class="custom-list mb-4">
+                            <li><small>Umyj włosy szamponem i osusz ręcznikiem lub pozostaw lekko wilgotne.</small></li>
+                            <li><small>Podziel włosy na sekcje dla łatwiejszej aplikacji.</small></li>
+                            <li><small>Nałóż niewielką ilość wcierki bezpośrednio na skórę głowy.</small></li>
+                            <li><small>Delikatnie wmasuj opuszkami palców, wykonując koliste ruchy.</small></li>
+                            <li><small>Rozprowadź produkt równomiernie po całej skórze głowy.</small></li>
+                            <li><small>Nie spłukuj wcierki, pozwól jej wchłonąć się w skórę.</small></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                </div>
             </div>
+
 
                                                                     <!-- ZABIEG -->
             <div class="tab-pane fade" id="zabieg" role="tabpanel" aria-labelledby="zabieg-tab">
@@ -401,6 +463,9 @@
                 </div>
             </div>
                                                                  <!-- PRODUKTY -->
+
+
+                                                                 <!-- SZAMPONY -->
             <div class="tab-pane fade" id="produkty" role="tabpanel" aria-labelledby="produkty-tab">
 
                 <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Szampony</h2>
@@ -410,30 +475,38 @@
                 </a>
                 <p style="display: inline;">- szampon bez SLS i SLES</p>
                 <br>
+
                 <a href="https://lyko.com/no/paul-mitchell/paul-mitchell-awg-nourishing-shampoo-250ml"
                     style="display: inline;">
-                    <p class="mt-8" style="display: inline;">Paul Mitchell
-                    Awapuhi Wild Ginger</p>
+                    <p class="mt-8" style="display: inline;">Paul Mitchell Awapuhi Wild Ginger</p>
                 </a>
                 <p style="display: inline;">- ten szampon jest wolny od siarczanów, SLS, SLES i ALS. Delikatnie oczyszcza, chroni kolor i naprawia suche, zniszczone
                 włosy. Zawiera składniki takie jak imbir awapuhi i keratyna, które wzmacniają i nawilżają włosy, pozostawiając je
                 miękkie i lśniące.</p>
                 <br>
+
                 <a href="https://lyko.com/no/paul-mitchell/paul-mitchell-awg-hydrasoft-shampoo-250ml"
                     style="display: inline;">
-                    <p class="mt-8" style="display: inline;">Paul Mitchell
-                    Awapuhi Wild Ginger</p>
+                    <p class="mt-8" style="display: inline;">Paul Mitchell Awapuhi Wild Ginger</p>
                 </a>
                 <p style="display: inline;">- ten hydratyzujący szampon również jest wolny od SLS, SLES i ALS. Delikatnie oczyszcza włosy, jednocześnie nawilżając je
                 i dodając im blasku. Zawiera mieszankę aminokwasów, roślinne proteiny i odżywcze oleje, które głęboko nawilżają włosy.</p>
                 <br>
+
                 <a href="https://lyko.com/no/maria-nila/maria-nila-palett-shampoo-true-soft" style="display: inline;">
-                    <p class="mt-8" style="display: inline;">Maria Nila
-                    True Soft</p>
+                    <p class="mt-8" style="display: inline;">Maria Nila True Soft</p>
                 </a>
                 <p style="display: inline;">- szampon bez siarczanów, stworzony specjalnie do włosów suchych i puszących się. Zawiera olej arganowy, który nawilża i
                 wzmacnia włosy, nadając im miękkość i blask. Produkt jest również wegański i przyjazny dla środowiska.</p>
+                <br>
 
+                <a href="https://lyko.com/no/moroccanoil/moroccanoil-volume-shampoo-500ml" style="display: inline;">
+                    <p class="mt-8" style="display: inline;">Moroccanoil Volume</p>
+                </a>
+                <p style="display: inline;">- ten szampon ma na celu dodanie objętości włosom, a jego składniki aktywne obejmują glicerynę, olej arganowy oraz różne ekstrakty roślinne. Jest wolny od SLS i SLES, dzięki czemu jest delikatny dla skóry głowy</p>
+
+
+                                                                <!-- WCIERKI -->
                 <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Wcierki</h2>
                 <a href="https://lyko.com/no/copenhagen-grooming/copenhagen-grooming-the-hair-activator-100-ml"
                     style="display: inline;">
