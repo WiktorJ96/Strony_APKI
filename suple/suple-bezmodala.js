@@ -1,12 +1,12 @@
-var storagePrefix = 'suple_';
+let storagePrefix = 'suple_';
 
 document.addEventListener('DOMContentLoaded', function () {
-                var calendarEl = document.getElementById('calendar');
-                var eventsListEl = document.getElementById('events-list');
-                var saveButton = document.getElementById('saveButton');
-                var exportButton = document.getElementById('exportButton');
-                var importFile = document.getElementById('importFile');
-                var importButton = document.getElementById('importButton');
+                let calendarEl = document.getElementById('calendar');
+                let eventsListEl = document.getElementById('events-list');
+                let saveButton = document.getElementById('saveButton');
+                let exportButton = document.getElementById('exportButton');
+                let importFile = document.getElementById('importFile');
+                let importButton = document.getElementById('importButton');
 
                 if (!calendarEl) console.error('Element #calendar not found');
                 if (!eventsListEl) console.error('Element #events-list not found');
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
 
-                var calendar = new FullCalendar.Calendar(calendarEl, {
+                let calendar = new FullCalendar.Calendar(calendarEl, {
                     initialView: 'dayGridMonth',
                     headerToolbar: {
                         left: 'prev,next today',
@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     },
                     select: function (info) {
-                        var activity = prompt('Wprowadź czynność:');
+                        let activity = prompt('Wprowadź czynność:');
                         if (activity) {
-                            var event = {
+                            let event = {
                                 title: activity,
                                 start: info.startStr,
                                 end: info.endStr,
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     },
                     eventDidMount: function (info) {
-                        var tooltip = new bootstrap.Tooltip(info.el, {
+                        let tooltip = new bootstrap.Tooltip(info.el, {
                             title: info.event.title,
                             placement: 'top',
                             trigger: 'hover',
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 function saveEvents(events) {
-    var eventArray = events.map(function (event) {
+    let eventArray = events.map(function (event) {
         return {
             title: event.title,
             start: event.start.toISOString(),
@@ -110,19 +110,25 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
                 function loadEvents(calendar) {
-    var savedEvents = localStorage.getItem(storagePrefix + 'calendarEvents');
+    let savedEvents = localStorage.getItem(storagePrefix + 'calendarEvents');
     if (savedEvents) {
-        var eventArray = JSON.parse(savedEvents);
+        let eventArray = JSON.parse(savedEvents);
         eventArray.forEach(function (eventData) {
             calendar.addEvent(eventData);
         });
     }
-}
+  }
+  
+  request.onsuccess = (event) => {
+  db = event.target.result;
+  console.log("Baza danych otwarta pomyślnie");
+  loadAllSupplements();
+};
 
                 function updateEventsList() {
                     if (eventsListEl) {
-                        var events = calendar.getEvents();
-                        var html = '<h3>Lista wydarzeń:</h3><ul>';
+                        let events = calendar.getEvents();
+                        let html = '<h3>Lista wydarzeń:</h3><ul>';
                         events.forEach(function (event) {
                             html += '<li>' + event.title + ' - ' + formatDate(event.start) + '</li>';
                         });
@@ -153,8 +159,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         csvContent += row + "\n";
                     });
 
-                    var encodedUri = encodeURI(csvContent);
-                    var link = document.createElement("a");
+                    let encodedUri = encodeURI(csvContent);
+                    let link = document.createElement("a");
                     link.setAttribute("href", encodedUri);
                     link.setAttribute("download", storagePrefix + "suplementacja.csv");
                     document.body.appendChild(link);
@@ -162,17 +168,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 function importEvents(calendar) {
-                    var file = document.getElementById('importFile').files[0];
+                    let file = document.getElementById('importFile').files[0];
                     if (file) {
-                        var reader = new FileReader();
+                        let reader = new FileReader();
                         reader.onload = function (e) {
-                            var contents = e.target.result;
-                            var lines = contents.split("\n");
+                            let contents = e.target.result;
+                            let lines = contents.split("\n");
                             lines.shift(); // Usuń nagłówek
 
                             lines.forEach(function (line) {
                                 if (line.trim() !== '') {
-                                    var parts = line.split(',');
+                                    let parts = line.split(',');
                                     calendar.addEvent({
                                         title: parts[0],
                                         start: new Date(parts[1]),
@@ -212,15 +218,19 @@ request.onupgradeneeded = (event) => {
 };
 
 function saveOrder(id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold) {
+  console.log("Próba zapisu:", id, supplementName);
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(["orders"], "readwrite");
     const objectStore = transaction.objectStore("orders");
-    const request = objectStore.put({ id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold });
+    const data = { id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold };
+    const request = objectStore.put(data);
     request.onerror = (event) => {
+      console.error("Błąd zapisu:", event.target.error);
       reject("Błąd zapisu: " + event.target.error);
     };
     request.onsuccess = (event) => {
-      resolve("Zapisano pomyślnie");
+      console.log("Zapisano pomyślnie:", id, supplementName);
+      resolve(data);
     };
   });
 }
@@ -241,16 +251,21 @@ function getOrder(id) {
 
 function updateSupplementInfo(id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold) {
   let infoElement = $(`button[data-id="${id}"]`).siblings('.order-info');
-  if (infoElement.length === 0) {
-    infoElement = $('<span class="order-info"></span>').insertAfter(`button[data-id="${id}"]`);
-  }
-  const daysSupply = Math.floor(quantity / dailyDosage);
-  const nextOrderDate = new Date(orderDate);
-  nextOrderDate.setDate(nextOrderDate.getDate() + daysSupply - reorderThreshold);
-  const today = new Date();
-  const daysLeft = Math.ceil((nextOrderDate - today) / (1000 * 60 * 60 * 24));
+  
+  if (quantity && orderDate && dailyDosage) {
+    if (infoElement.length === 0) {
+      infoElement = $('<span class="order-info"></span>').insertAfter(`button[data-id="${id}"]`);
+    }
+    const daysSupply = Math.floor(quantity / dailyDosage);
+    const nextOrderDate = new Date(orderDate);
+    nextOrderDate.setDate(nextOrderDate.getDate() + daysSupply - reorderThreshold);
+    const today = new Date();
+    const daysLeft = Math.ceil((nextOrderDate - today) / (1000 * 60 * 60 * 24));
 
-  infoElement.text(`Zamówiono: ${quantity} szt. ${new Date(orderDate).toLocaleDateString()} | Następne: ${nextOrderDate.toLocaleDateString()} | Pozostało: ${daysLeft} dni`);
+    infoElement.text(`Zamówiono: ${quantity} szt. ${new Date(orderDate).toLocaleDateString()} | Następne: ${nextOrderDate.toLocaleDateString()} | Pozostało: ${daysLeft} dni`);
+  } else {
+    infoElement.remove();
+  }
 }
 
 function loadAllSupplements() {
@@ -296,12 +311,76 @@ function updateOrderPredictions() {
   }
 }
 
+function updateDaysLeft() {
+  const transaction = db.transaction(["orders"], "readonly");
+  const objectStore = transaction.objectStore("orders");
+  const request = objectStore.openCursor();
+
+  request.onsuccess = (event) => {
+    const cursor = event.target.result;
+    if (cursor) {
+      const data = cursor.value;
+      const today = new Date();
+      const orderDate = new Date(data.orderDate);
+      const daysSupply = Math.floor(data.quantity / data.dailyDosage);
+      const nextOrderDate = new Date(orderDate);
+      nextOrderDate.setDate(nextOrderDate.getDate() + daysSupply - data.reorderThreshold);
+      const daysLeft = Math.ceil((nextOrderDate - today) / (1000 * 60 * 60 * 24));
+
+      updateSupplementInfo(
+        data.id,
+        data.supplementName, 
+        data.quantity, 
+        data.orderDate, 
+        data.dailyDosage, 
+        data.reorderThreshold,
+        daysLeft
+      );
+
+      cursor.continue();
+    }
+  };
+}
+
+function deleteOrder(supplementName) {
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(["orders"], "readwrite");
+    const objectStore = transaction.objectStore("orders");
+    const request = objectStore.delete(supplementName);
+    
+    request.onerror = (event) => {
+      reject("Błąd usuwania: " + event.target.error);
+    };
+    
+    request.onsuccess = (event) => {
+      resolve("Usunięto pomyślnie");
+    };
+  });
+}
+
+$('#deleteEntry').on('click', function() {
+  let supplementName = $('#supplementName').val();
+  
+  if (confirm("Czy na pewno chcesz usunąć ten wpis?")) {
+    deleteOrder(supplementName).then(() => {
+      console.log('Usunięto:', supplementName);
+      // Usuń informacje o suplemencie z UI
+      $(`button[data-supplement="${supplementName}"]`).siblings('.order-info').remove();
+      $('#editModal').modal('hide');
+    }).catch(error => {
+      console.error("Błąd podczas usuwania:", error);
+      alert("Wystąpił błąd podczas usuwania danych. Spróbuj ponownie.");
+    });
+  }
+});
+
 $(document).ready(function() {
   $('.edit-btn').on('click', function() {
-    var id = $(this).data('id');
-    var supplementName = $(this).data('supplement');
+    let id = $(this).data('id');
+    let supplementName = $(this).data('supplement');
     $('#supplementName').val(supplementName);
     $('#editModalLabel').text('Edytuj zamówienie: ' + supplementName);
+    $('#editModal').data('currentId', id);
     
     getOrder(id).then(savedData => {
       if (savedData) {
@@ -327,21 +406,32 @@ $(document).ready(function() {
 
   $('#quantity, #orderDate, #dailyDosage, #reorderThreshold').on('input', updateOrderPredictions);
 
-  $('#saveChanges').on('click', function() {
-    var id = $('.edit-btn.active').data('id');
-    var supplementName = $('#supplementName').val();
-    var quantity = $('#quantity').val();
-    var orderDate = $('#orderDate').val();
-    var dailyDosage = $('#dailyDosage').val();
-    var reorderThreshold = $('#reorderThreshold').val();
+$('#saveChanges').on('click', function() {
+  let id = $('#editModal').data('currentId');
+  console.log("ID przed zapisem:", id);
+  let supplementName = $('#supplementName').val();
+  let quantity = $('#quantity').val();
+  let orderDate = $('#orderDate').val();
+  let dailyDosage = $('#dailyDosage').val();
+  let reorderThreshold = $('#reorderThreshold').val();
     
-    saveOrder(id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold).then(() => {
-      console.log('Zapisano:', id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold);
-      updateSupplementInfo(id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold);
-      $('#editModal').modal('hide');
-    }).catch(error => {
-      console.error("Błąd podczas zapisywania:", error);
-      alert("Wystąpił błąd podczas zapisywania danych. Spróbuj ponownie.");
-    });
+  saveOrder(id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold).then((savedData) => {
+    console.log('Zapisano:', savedData);
+    updateSupplementInfo(
+      savedData.id, 
+      savedData.supplementName, 
+      savedData.quantity, 
+      savedData.orderDate, 
+      savedData.dailyDosage, 
+      savedData.reorderThreshold
+    );
+    $('#editModal').modal('hide');
+  }).catch(error => {
+    console.error("Błąd podczas zapisywania:", error);
+    alert("Wystąpił błąd podczas zapisywania danych. Spróbuj ponownie.");
   });
+  $('#editModal').on('hidden.bs.modal', function () {
+  loadAllSupplements();
+});
+});
 });
