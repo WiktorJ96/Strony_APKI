@@ -224,96 +224,68 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
     function exportEvents(events) {
-    debugEvents(events);  // Pozostawiam tę linię, zakładając, że funkcja debugEvents jest zdefiniowana gdzie indziej
+    let exportData = events.map(event => ({
+        title: event.title,
+        start: event.start ? event.start.toISOString() : null,
+        end: event.end ? event.end.toISOString() : null,
+        allDay: event.allDay
+    }));
 
-    let csvContent = "data:text/csv;charset=utf-8,";
-    csvContent += "Tytuł,Data rozpoczęcia,Data zakończenia,Cały dzień\n";
+    let jsonContent = JSON.stringify(exportData, null, 2);
+    let blob = new Blob([jsonContent], {type: 'application/json'});
+    let url = URL.createObjectURL(blob);
 
-    let exportedCount = 0;
-    let skippedCount = 0;
+    let link = document.createElement('a');
+    link.href = url;
+    link.download = `rutyna_${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
 
-    events.forEach(function (event, index) {
-        try {
-            let row = [
-                event.title || 'Brak tytułu',
-                event.start ? event.start.toISOString() : '',
-                event.end ? event.end.toISOString() : '',
-                event.allDay
-            ].map(e => {
-                // Escape special characters and wrap in quotes
-                return `"${(e + '').replace(/"/g, '""')}"`;
-            }).join(",");
-            
-            csvContent += row + "\n";
-            exportedCount++;
-        } catch (error) {
-            console.error(`Błąd podczas eksportowania wydarzenia ${index + 1}:`, error);
-            skippedCount++;
-        }
-    });
-
-    if (exportedCount > 0) {
-        try {
-            var encodedUri = encodeURI(csvContent);
-            var link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `rutyna_${new Date().toISOString().slice(0,10)}.csv`);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-
-            alert(`Eksport zakończony.\nWyeksportowano: ${exportedCount} wydarzeń.\nPominięto: ${skippedCount} wydarzeń.`);
-        } catch (error) {
-            console.error('Błąd podczas tworzenia pliku do pobrania:', error);
-            alert('Wystąpił błąd podczas tworzenia pliku do pobrania.');
-        }
-    } else {
-        alert('Brak wydarzeń do wyeksportowania.');
-    }
+    alert(`Eksport zakończony. Wyeksportowano ${exportData.length} wydarzeń.`);
 }
 
     function importEvents(calendar) {
-    var file = document.getElementById('importFile').files[0];
+    let file = document.getElementById('importFile').files[0];
     if (file) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
+        let reader = new FileReader();
+        reader.onload = function(e) {
             try {
-                var contents = e.target.result;
-                var lines = contents.split("\n");
-                lines.shift(); // Usuń nagłówek
+                let importedEvents = JSON.parse(e.target.result);
+                
+                // Tworzymy kopię zapasową obecnych wydarzeń
+                let backupEvents = calendar.getEvents().map(event => ({
+                    title: event.title,
+                    start: event.start,
+                    end: event.end,
+                    allDay: event.allDay
+                }));
 
-                calendar.removeAllEvents(); // Usuń wszystkie istniejące wydarzenia
+                calendar.removeAllEvents(); // Usuwamy wszystkie istniejące wydarzenia
 
-                var successfulImports = 0;
-                var failedImports = 0;
+                let successfulImports = 0;
+                let failedImports = 0;
 
-                lines.forEach(function (line, index) {
-                    if (line.trim() !== '') {
-                        var parts = line.split(',').map(part => part.replace(/^"(.*)"$/, '$1').trim());
-                        if (parts.length >= 4) {
-                            try {
-                                var event = {
-                                    title: parts[0],
-                                    start: parts[1] ? new Date(parts[1]) : null,
-                                    end: parts[2] ? new Date(parts[2]) : null,
-                                    allDay: parts[3].toLowerCase() === 'true'
-                                };
+                importedEvents.forEach((eventData, index) => {
+                    try {
+                        let event = {
+                            title: eventData.title,
+                            start: eventData.start ? new Date(eventData.start) : null,
+                            end: eventData.end ? new Date(eventData.end) : null,
+                            allDay: eventData.allDay
+                        };
 
-                                if (event.start && !isNaN(event.start.getTime())) {
-                                    calendar.addEvent(event);
-                                    successfulImports++;
-                                } else {
-                                    console.warn(`Nieprawidłowa data rozpoczęcia w linii ${index + 2}`);
-                                    failedImports++;
-                                }
-                            } catch (error) {
-                                console.error(`Błąd podczas importowania wydarzenia z linii ${index + 2}:`, error);
-                                failedImports++;
-                            }
+                        if (event.start && !isNaN(event.start.getTime())) {
+                            calendar.addEvent(event);
+                            successfulImports++;
                         } else {
-                            console.warn(`Nieprawidłowa liczba pól w linii ${index + 2}`);
+                            console.warn(`Nieprawidłowa data rozpoczęcia dla wydarzenia ${index + 1}`);
                             failedImports++;
                         }
+                    } catch (error) {
+                        console.error(`Błąd podczas importowania wydarzenia ${index + 1}:`, error);
+                        failedImports++;
                     }
                 });
 
@@ -323,14 +295,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     alert(`Import zakończony.\nPomyślnie zaimportowano: ${successfulImports} wydarzeń.\nNie udało się zaimportować: ${failedImports} wydarzeń.`);
                 }).catch(error => {
                     console.error("Błąd zapisu wydarzeń:", error);
-                    alert('Wystąpił błąd podczas zapisu zaimportowanych wydarzeń.');
+                    // W przypadku błędu, przywracamy kopię zapasową
+                    calendar.removeAllEvents();
+                    backupEvents.forEach(event => calendar.addEvent(event));
+                    calendar.render();
+                    updateEventsList();
+                    alert('Wystąpił błąd podczas zapisu zaimportowanych wydarzeń. Przywrócono poprzedni stan kalendarza.');
                 });
             } catch (error) {
                 console.error('Błąd podczas importowania:', error);
-                alert('Wystąpił błąd podczas importowania. Sprawdź format pliku.');
+                alert('Wystąpił błąd podczas importowania. Sprawdź format pliku JSON.');
             }
         };
-        reader.onerror = function (error) {
+        reader.onerror = function(error) {
             console.error('Błąd odczytu pliku:', error);
             alert('Wystąpił błąd podczas odczytu pliku.');
         };
