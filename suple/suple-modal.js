@@ -142,55 +142,57 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function exportEvents(events) {
-        let csvContent = "data:text/csv;charset=utf-8,";
-        csvContent += "Tytuł,Data rozpoczęcia,Data zakończenia,Cały dzień\n";
+    let exportData = events.map(event => ({
+        title: event.title,
+        start: event.start.toISOString(),
+        end: event.end ? event.end.toISOString() : null,
+        allDay: event.allDay
+    }));
 
-        events.forEach(function (event) {
-            let row = [
-                event.title,
-                event.start.toISOString(),
-                event.end ? event.end.toISOString() : '',
-                event.allDay
-            ].join(",");
-            csvContent += row + "\n";
-        });
+    let jsonContent = JSON.stringify(exportData, null, 2);
+    let blob = new Blob([jsonContent], {type: 'application/json'});
+    let url = URL.createObjectURL(blob);
 
-        let encodedUri = encodeURI(csvContent);
-        let link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", storagePrefix + "suplementacja.csv");
-        document.body.appendChild(link);
-        link.click();
-    }
+    let link = document.createElement("a");
+    link.href = url;
+    link.download = `${storagePrefix}suplementacja_${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
 
     function importEvents(calendar) {
-        let file = document.getElementById('importFile').files[0];
-        if (file) {
-            let reader = new FileReader();
-            reader.onload = function (e) {
-                let contents = e.target.result;
-                let lines = contents.split("\n");
-                lines.shift(); // Usuń nagłówek
-
-                lines.forEach(function (line) {
-                    if (line.trim() !== '') {
-                        let parts = line.split(',');
-                        calendar.addEvent({
-                            title: parts[0],
-                            start: new Date(parts[1]),
-                            end: parts[2] ? new Date(parts[2]) : null,
-                            allDay: parts[3] === 'true'
-                        });
-                    }
+    let file = document.getElementById('importFile').files[0];
+    if (file) {
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            try {
+                let importedEvents = JSON.parse(e.target.result);
+                
+                importedEvents.forEach(function (eventData) {
+                    calendar.addEvent({
+                        title: eventData.title,
+                        start: new Date(eventData.start),
+                        end: eventData.end ? new Date(eventData.end) : null,
+                        allDay: eventData.allDay
+                    });
                 });
 
                 calendar.render();
                 updateEventsList();
                 saveEvents(calendar.getEvents());
-            };
-            reader.readAsText(file);
-        }
+                alert('Import zakończony pomyślnie.');
+            } catch (error) {
+                console.error('Błąd podczas importowania:', error);
+                alert('Wystąpił błąd podczas importowania. Sprawdź format pliku JSON.');
+            }
+        };
+        reader.readAsText(file);
+    } else {
+        alert('Proszę wybrać plik do importu.');
     }
+}
 });
 
 let db;
