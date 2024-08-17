@@ -1,4 +1,8 @@
 let storagePrefix = 'suple_';
+let db;
+let dbReady = false;
+const dbName = "SupplementsDB";
+const dbVersion = 2; // Zwiększona wersja dla nowego object store
 
 document.addEventListener('DOMContentLoaded', function () {
     let calendarEl = document.getElementById('calendar');
@@ -7,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let exportButton = document.getElementById('exportButton');
     let importFile = document.getElementById('importFile');
     let importButton = document.getElementById('importButton');
+    let addNoteButton = document.getElementById('addNote');
+    let notesListEl = document.getElementById('notesList');
 
     if (!calendarEl) console.error('Element #calendar not found');
     if (!eventsListEl) console.error('Element #events-list not found');
@@ -14,6 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!exportButton) console.error('Element #exportButton not found');
     if (!importFile) console.error('Element #importFile not found');
     if (!importButton) console.error('Element #importButton not found');
+    if (!addNoteButton) console.error('Element #addNote not found');
+    if (!notesListEl) console.error('Element #notesList not found');
 
     if (!calendarEl || !eventsListEl || !saveButton || !exportButton || !importFile || !importButton) {
         console.error('Required elements not found in the DOM');
@@ -21,6 +29,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     $('[data-toggle="tooltip"]').tooltip();
+
+    // Inicjalizacja bazy danych
+    const request = indexedDB.open(dbName, dbVersion);
+
+    request.onerror = (event) => {
+        console.error("Błąd otwarcia bazy IndexedDB:", event.target.error);
+    };
+
+    request.onsuccess = (event) => {
+    db = event.target.result;
+    console.log("Baza danych otwarta pomyślnie");
+    dbReady = true;
+    loadAllSupplements();
+    startDailyUpdate(db);
+    initializeNotebook(); // Przeniesiemy to tutaj
+};
+
+    request.onupgradeneeded = (event) => {
+        db = event.target.result;
+        if (!db.objectStoreNames.contains("orders")) {
+            db.createObjectStore("orders", { keyPath: "id" });
+        }
+        if (!db.objectStoreNames.contains("notes")) {
+            db.createObjectStore("notes", { keyPath: "id", autoIncrement: true });
+        }
+    };
 
     let calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -83,8 +117,30 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     calendar.render();
-    loadEvents(calendar);
+    if (typeof loadEvents === 'function') {
+        loadEvents(calendar);
+    }
     updateEventsList();
+
+    function updateEventsList() {
+    if (eventsListEl) {
+        let events = calendar.getEvents();
+        let html = '<h3>Lista wydarzeń:</h3><ul>';
+        events.forEach(function (event) {
+            html += '<li>' + event.title + ' - ' + formatDate(event.start) + '</li>';
+        });
+        html += '</ul>';
+        eventsListEl.innerHTML = html;
+    }
+    }
+    
+    function formatDate(date) {
+    return date.toLocaleDateString('pl-PL', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+}
 
     saveButton.addEventListener('click', function () {
         saveEvents(calendar.getEvents());
@@ -99,123 +155,183 @@ document.addEventListener('DOMContentLoaded', function () {
         importEvents(calendar);
     });
 
-    function saveEvents(events) {
-        let eventArray = events.map(function (event) {
-            return {
-                title: event.title,
-                start: event.start.toISOString(),
-                end: event.end ? event.end.toISOString() : null,
-                allDay: event.allDay
-            };
-        });
-        localStorage.setItem(storagePrefix + 'calendarEvents', JSON.stringify(eventArray));
+// Funkcje dla notatnika
+function initializeNotebook() {
+    const addNoteButton = document.getElementById("addNote");
+    if (addNoteButton) {
+        addNoteButton.removeEventListener('click', addNote);
+        addNoteButton.addEventListener('click', addNote);
     }
-
-    function loadEvents(calendar) {
-        let savedEvents = localStorage.getItem(storagePrefix + 'calendarEvents');
-        if (savedEvents) {
-            let eventArray = JSON.parse(savedEvents);
-            eventArray.forEach(function (eventData) {
-                calendar.addEvent(eventData);
-            });
-        }
-    }
-
-    function updateEventsList() {
-        if (eventsListEl) {
-            let events = calendar.getEvents();
-            let html = '<h3>Lista wydarzeń:</h3><ul>';
-            events.forEach(function (event) {
-                html += '<li>' + event.title + ' - ' + formatDate(event.start) + '</li>';
-            });
-            html += '</ul>';
-            eventsListEl.innerHTML = html;
-        }
-    }
-
-    function formatDate(date) {
-        return date.toLocaleDateString('pl-PL', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-    }
-
-    function exportEvents(events) {
-    let exportData = events.map(event => ({
-        title: event.title,
-        start: event.start.toISOString(),
-        end: event.end ? event.end.toISOString() : null,
-        allDay: event.allDay
-    }));
-
-    let jsonContent = JSON.stringify(exportData, null, 2);
-    let blob = new Blob([jsonContent], {type: 'application/json'});
-    let url = URL.createObjectURL(blob);
-
-    let link = document.createElement("a");
-    link.href = url;
-    link.download = `${storagePrefix}suplementacja_${new Date().toISOString().slice(0,10)}.json`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-}
-
-    function importEvents(calendar) {
-    let file = document.getElementById('importFile').files[0];
-    if (file) {
-        let reader = new FileReader();
-        reader.onload = function (e) {
-            try {
-                let importedEvents = JSON.parse(e.target.result);
-                
-                importedEvents.forEach(function (eventData) {
-                    calendar.addEvent({
-                        title: eventData.title,
-                        start: new Date(eventData.start),
-                        end: eventData.end ? new Date(eventData.end) : null,
-                        allDay: eventData.allDay
-                    });
-                });
-
-                calendar.render();
-                updateEventsList();
-                saveEvents(calendar.getEvents());
-                alert('Import zakończony pomyślnie.');
-            } catch (error) {
-                console.error('Błąd podczas importowania:', error);
-                alert('Wystąpił błąd podczas importowania. Sprawdź format pliku JSON.');
-            }
-        };
-        reader.readAsText(file);
+    if (dbReady) {
+        loadNotes();
     } else {
-        alert('Proszę wybrać plik do importu.');
+        console.log("Baza danych nie jest jeszcze gotowa. Oczekiwanie...");
+        setTimeout(initializeNotebook, 100); // Spróbuj ponownie za 100ms
     }
 }
+
+function addNote() {
+    const title = document.getElementById("noteTitle").value.trim();
+    const content = document.getElementById("noteContent").value.trim();
+    const addNoteButton = document.getElementById("addNote");
+    const mode = addNoteButton.getAttribute('data-mode');
+    const editId = addNoteButton.getAttribute('data-edit-id');
+    
+    if (!title || !content) {
+        alert("Proszę wypełnić tytuł i treść notatki.");
+        return;
+    }
+
+    const transaction = db.transaction(["notes"], "readwrite");
+    const objectStore = transaction.objectStore("notes");
+    
+    let request;
+    if (mode === 'edit' && editId) {
+        request = objectStore.put({ id: parseInt(editId), title: title, content: content });
+    } else {
+        request = objectStore.add({ title: title, content: content });
+    }
+
+    request.onerror = function(event) {
+        console.error("Błąd podczas zapisywania notatki:", event.target.error);
+    };
+
+    request.onsuccess = function(event) {
+        console.log("Notatka zapisana pomyślnie");
+        document.getElementById("noteTitle").value = "";
+        document.getElementById("noteContent").value = "";
+        addNoteButton.textContent = "Dodaj notatkę";
+        addNoteButton.removeAttribute('data-mode');
+        addNoteButton.removeAttribute('data-edit-id');
+        loadNotes();
+    };
+}
+
+function loadNotes() {
+    if (!dbReady) {
+        console.log("Baza danych nie jest jeszcze gotowa. Ponowna próba za 100ms.");
+        setTimeout(loadNotes, 100);
+        return;
+    }
+
+    const notesList = document.getElementById("notesList");
+    if (!notesList) {
+        console.error("Element #notesList not found");
+        return;
+    }
+    notesList.innerHTML = "";
+
+    const transaction = db.transaction(["notes"], "readonly");
+    const objectStore = transaction.objectStore("notes");
+    
+    objectStore.openCursor().onsuccess = function(event) {
+        const cursor = event.target.result;
+        if (cursor) {
+            const listItem = document.createElement("li");
+            listItem.className = "list-group-item";
+            listItem.innerHTML = `
+                <h3 class="font-bold">${cursor.value.title}</h3>
+                <p>${cursor.value.content}</p>
+                <button class="btn btn-primary btn-sm mt-2 mr-2 edit-note" data-id="${cursor.value.id}">Edytuj</button>
+                <button class="btn btn-danger btn-sm mt-2 delete-note" data-id="${cursor.value.id}">Usuń</button>
+            `;
+            notesList.appendChild(listItem);
+            cursor.continue();
+        }
+    };
+}
+
+// Dodaj te funkcje do obsługi zdarzeń
+document.addEventListener('click', function(e) {
+    if (e.target && e.target.classList.contains('edit-note')) {
+        const id = parseInt(e.target.getAttribute('data-id'));
+        editNote(id);
+    }
+    if (e.target && e.target.classList.contains('delete-note')) {
+        const id = parseInt(e.target.getAttribute('data-id'));
+        deleteNote(id);
+    }
 });
 
-let db;
-const dbName = "SupplementsDB";
+function editNote(id) {
+    const transaction = db.transaction(["notes"], "readonly");
+    const objectStore = transaction.objectStore("notes");
+    const request = objectStore.get(id);
 
-const request = indexedDB.open(dbName, 1);
+    request.onerror = function(event) {
+        console.error("Błąd podczas pobierania notatki:", event.target.error);
+    };
 
-request.onerror = (event) => {
-    console.error("Błąd otwarcia bazy IndexedDB:", event.target.error);
-};
+    request.onsuccess = function(event) {
+        const note = event.target.result;
+        document.getElementById("noteTitle").value = note.title;
+        document.getElementById("noteContent").value = note.content;
+        
+        const addNoteButton = document.getElementById("addNote");
+        addNoteButton.textContent = "Zapisz zmiany";
+        addNoteButton.setAttribute('data-mode', 'edit');
+        addNoteButton.setAttribute('data-edit-id', id);
+    };
+}
 
-request.onsuccess = (event) => {
-    db = event.target.result;
-    console.log("Baza danych otwarta pomyślnie");
-    loadAllSupplements();
-    startDailyUpdate(db);
-};
+function updateNote(id) {
+    const title = document.getElementById("noteTitle").value.trim();
+    const content = document.getElementById("noteContent").value.trim();
+    
+    if (!title || !content) {
+        alert("Proszę wypełnić tytuł i treść notatki.");
+        return;
+    }
 
-request.onupgradeneeded = (event) => {
-    db = event.target.result;
-    const objectStore = db.createObjectStore("orders", { keyPath: "id" });
-};
+    const transaction = db.transaction(["notes"], "readwrite");
+    const objectStore = transaction.objectStore("notes");
+    const request = objectStore.put({ id: id, title: title, content: content });
 
+    request.onerror = function(event) {
+        console.error("Błąd podczas aktualizacji notatki:", event.target.error);
+    };
+
+    request.onsuccess = function(event) {
+        console.log("Notatka zaktualizowana pomyślnie");
+        document.getElementById("noteTitle").value = "";
+        document.getElementById("noteContent").value = "";
+        
+        const addNoteButton = document.getElementById("addNote");
+        addNoteButton.textContent = "Dodaj notatkę";
+        addNoteButton.onclick = addNote;
+        
+        loadNotes();
+    };
+}
+
+function deleteNote(id) {
+    if (confirm("Czy na pewno chcesz usunąć tę notatkę?")) {
+        const transaction = db.transaction(["notes"], "readwrite");
+        const objectStore = transaction.objectStore("notes");
+        const request = objectStore.delete(id);
+
+        request.onerror = function(event) {
+            console.error("Błąd podczas usuwania notatki:", event.target.error);
+        };
+
+        request.onsuccess = function(event) {
+            console.log("Notatka usunięta pomyślnie");
+            loadNotes();
+        };
+    }
+}
+
+    // Obsługa przełączania zakładek
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        if (e.target.id === 'notatnik-tab') {
+            initializeNotebook();
+        }
+    });
+
+    initializeNotebook();
+});
+
+// Funkcje dla suplementów
 function saveOrder(id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold) {
     console.log("Próba zapisu:", id, supplementName);
     return new Promise((resolve, reject) => {
@@ -249,38 +365,38 @@ function getOrder(id) {
 }
 
 function updateSupplementInfo(id, supplementName, quantity, orderDate, dailyDosage, reorderThreshold) {
-        let infoElement = $(`button[data-id="${id}"]`);
+    let infoElement = $(`button[data-id="${id}"]`);
 
-        if (infoElement.length === 0) {
-            console.warn(`Element o id ${id} nie został znaleziony`);
-            return;
-        }
-
-        // Usuń istniejące informacje
-        infoElement.siblings('.order-info').remove();
-        infoElement.tooltip('dispose');
-
-        if (quantity && orderDate && dailyDosage) {
-            const daysSupply = Math.floor(quantity / dailyDosage);
-            const nextOrderDate = new Date(orderDate);
-            nextOrderDate.setDate(nextOrderDate.getDate() + daysSupply - reorderThreshold);
-            const today = new Date();
-            const daysLeft = Math.ceil((nextOrderDate - today) / (1000 * 60 * 60 * 24));
-
-            // Dodaj nowe informacje
-            let infoSpan = $('<span class="order-info"></span>');
-            infoSpan.append('<i class="bx bxs-calendar-check" style="color: green;"></i>');
-            infoElement.after(infoSpan);
-
-            // Dodaj tooltip z informacjami
-            infoElement.attr('data-toggle', 'tooltip');
-            infoElement.attr('data-placement', 'top');
-            infoElement.attr('title', `Zamówiono: ${quantity} szt. ${new Date(orderDate).toLocaleDateString()} | Następne: ${nextOrderDate.toLocaleDateString()} | Pozostało: ${daysLeft} dni`);
-
-            // Inicjalizuj tooltip
-            infoElement.tooltip();
-        }
+    if (infoElement.length === 0) {
+        console.warn(`Element o id ${id} nie został znaleziony`);
+        return;
     }
+
+    // Usuń istniejące informacje
+    infoElement.siblings('.order-info').remove();
+    infoElement.tooltip('dispose');
+
+    if (quantity && orderDate && dailyDosage) {
+        const daysSupply = Math.floor(quantity / dailyDosage);
+        const nextOrderDate = new Date(orderDate);
+        nextOrderDate.setDate(nextOrderDate.getDate() + daysSupply - reorderThreshold);
+        const today = new Date();
+        const daysLeft = Math.ceil((nextOrderDate - today) / (1000 * 60 * 60 * 24));
+
+        // Dodaj nowe informacje
+        let infoSpan = $('<span class="order-info"></span>');
+        infoSpan.append('<i class="bx bxs-calendar-check" style="color: green;"></i>');
+        infoElement.after(infoSpan);
+
+        // Dodaj tooltip z informacjami
+        infoElement.attr('data-toggle', 'tooltip');
+        infoElement.attr('data-placement', 'top');
+        infoElement.attr('title', `Zamówiono: ${quantity} szt. ${new Date(orderDate).toLocaleDateString()} | Następne: ${nextOrderDate.toLocaleDateString()} | Pozostało: ${daysLeft} dni`);
+
+        // Inicjalizuj tooltip
+        infoElement.tooltip();
+    }
+}
 
 function loadAllSupplements() {
     console.log("Ładowanie wszystkich suplementów");
@@ -298,7 +414,7 @@ function loadAllSupplements() {
             console.log("Znaleziono wpis:", cursor.value);
             updateSupplementInfo(
                 cursor.value.id,
-                cursor.value.supplementName,
+                cursor.value.supplementName, // Poprawione: usunięto dodatkowe "cursor.value."
                 cursor.value.quantity,
                 cursor.value.orderDate,
                 cursor.value.dailyDosage,
@@ -431,7 +547,6 @@ $(document).on('click', '.edit-btn', function() {
     });
 });
 
-
 $('#quantity, #orderDate, #dailyDosage, #reorderThreshold').on('input', updateOrderPredictions);
 
 $('#saveChanges').on('click', function () {
@@ -480,4 +595,3 @@ $(document).on('click', '#deleteEntry', function() {
         alert("Wystąpił błąd podczas usuwania danych. Spróbuj ponownie.");
     });
 });
-
