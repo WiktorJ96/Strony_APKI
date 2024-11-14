@@ -33,10 +33,7 @@
 
         <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="mycie-tab" data-toggle="tab" href="#mycie" role="tab" aria-controls="mycie" aria-selected="true">Mycie</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="odzywianie-tab" data-toggle="tab" href="#odzywianie" role="tab" aria-controls="odzywianie" aria-selected="false">Odżywianie</a>
+                <a class="nav-link active" id="mycie-odzywianie-tab" data-toggle="tab" href="#mycie-odzywianie" role="tab" aria-controls="mycie-odzywianie" aria-selected="true">Mycie&Odżywianie</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="wcierki-tab" data-toggle="tab" href="#wcierki" role="tab" aria-controls="wcierki" aria-selected="false">Wcierki</a>
@@ -60,178 +57,105 @@
 
         <div class="tab-content" id="myTabContent">
 
-                                                                    <!-- MYCIE -->
-            <div class="tab-pane fade show active" id="mycie" role="tabpanel" aria-labelledby="mycie-tab">
+                                                                    <!-- MYCIE&ODŻYWIANIE -->
+            <div class="tab-pane fade show active" id="mycie-odzywianie" role="tabpanel" aria-labelledby="mycie-odzywianie-tab">
                 <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Moja rutyna</h1>
-                
+                    <div>
+                      <h2 style="display: flex; justify-content: center; align-items: center;">Plan pielęgnacji włosów</h2>
+                      
+                      <h3>Codzienna pielęgnacja:</h3>
+                      <ul>
+                        <li>Szampon 1 (nawilżenie, ochrona) lub 2 (regeneracja).<a href="https://lyko.com/no/maria-nila/maria-nila-palett-shampoo-true-soft" style="display: inline;"><button class="details-btn">szampon</button></a></li>
+                        <li>Odżywka 1 (nawilżenie) lub 2 (wzmocnienie i regeneracja).<a href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-conditioner-300" style="display: inline;"><button class="details-btn">odżywka</button></a></li>
+                      </ul>
 
-                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Mycie skóry głowy - Informacje i wskazówki</h1>
-                    <p class="mb-4">Mycie skóry głowy jest kluczowym elementem pielęgnacji włosów, ponieważ pomaga utrzymać czystość,
-                        zdrowie i równowagę skóry, a także wspiera zdrowy wzrost włosów. Oto szczegółowy przewodnik na temat mycia skóry
-                        głowy:</p>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Czego najlepiej używać do mycia skóry głowy?</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Szampony:</strong>
-                            <ul class="list-disc pl-5 mb-4">
-                                <li><strong>Delikatne szampony bez siarczanów(SLS):</strong> Szampony bez siarczanów są łagodniejsze dla
-                                    skóry głowy i włosów, nie przesuszają ich i są odpowiednie dla większości typów włosów.</li>
-                                <li><strong>Szampony z naturalnymi składnikami:</strong> Wybieraj szampony zawierające naturalne
-                                    składniki, takie jak olejek arganowy, aloes, czy ekstrakt z rumianku, które mogą łagodzić i nawilżać
-                                    skórę głowy.</li>
-                                <li><strong>Szampony lecznicze:</strong> Dla osób z problemami skóry głowy, takimi jak łupież,
-                                    łojotokowe zapalenie skóry czy łuszczyca, mogą być wskazane szampony lecznicze zawierające
-                                    substancje aktywne, takie jak ketokonazol, pirytionian cynku lub siarkę.</li>
-                            </ul>
-                        </li>
-                        <li><strong>Ziołowe płukanki:</strong>
-                            <ul class="list-disc pl-5 mb-4">
-                                <li><strong>Płukanka z pokrzywy:</strong> Może wzmacniać włosy i stymulować ich wzrost.</li>
-                                <li><strong>Płukanka z rumianku:</strong> Działa kojąco na skórę głowy, pomaga w przypadku podrażnień.
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Jak często myć skórę głowy?</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Typ skóry i włosów:</strong>
-                            <ul class="list-disc pl-5 mb-4">
-                                <li><strong>Normalne włosy i skóra głowy:</strong> 2-3 razy w tygodniu.</li>
-                                <li><strong>Tłuste włosy i skóra głowy:</strong> Codziennie lub co drugi dzień, aby kontrolować nadmiar
-                                    sebum.</li>
-                                <li><strong>Suche i zniszczone włosy:</strong> 1-2 razy w tygodniu, aby nie przesuszyć włosów i skóry
-                                    głowy.</li>
-                            </ul>
-                        </li>
-                        <li><strong>Styl życia i aktywność fizyczna:</strong>
-                            <ul class="list-disc pl-5 mb-4">
-                                <li><strong>Aktywność fizyczna:</strong> Osoby prowadzące aktywny tryb życia, uprawiające sport mogą myć
-                                    włosy częściej, aby usunąć pot i zanieczyszczenia.</li>
-                                <li><strong>Środowisko:</strong> Osoby żyjące w zanieczyszczonym środowisku mogą potrzebować częstszego
-                                    mycia włosów.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Ogólne wskazówki dotyczące mycia skóry głowy</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Technika mycia:</strong>
-                            <ul class="list-disc pl-5 mb-4">
-                                <li><strong>Ciepła woda:</strong> Używaj letniej wody, aby nie przesuszyć skóry głowy. Unikaj gorącej
-                                    wody, która może uszkodzić włosy i skórę.</li>
-                                <li><strong>Delikatne masowanie:</strong> Delikatnie masuj skórę głowy opuszkami palców przez kilka
-                                    minut, aby poprawić krążenie i dokładnie oczyścić skórę.</li>
-                                <li><strong>Dokładne spłukiwanie:</strong> Upewnij się, że dokładnie spłukałeś szampon i odżywkę, aby
-                                    uniknąć podrażnień i nagromadzenia się produktów na skórze głowy.</li>
-                            </ul>
-                        </li>
-                        <li><strong>Produkty dodatkowe:</strong>
-                            <ul class="list-disc pl-5 mb-4">
-                                <li><strong>Peelingi do skóry głowy:</strong> Stosuj peelingi do skóry głowy raz na tydzień lub dwa, aby
-                                    usunąć martwe komórki skóry i zanieczyszczenia.</li>
-                                <li><strong>Toniki i serum:</strong> Po myciu można używać toników i serum, które nawilżają skórę głowy
-                                    i wspierają zdrowy wzrost włosów.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Własny szampon do włosów</h2>
-                    <p class="mb-4">Tworzenie własnego szamponu do włosów może być satysfakcjonującym projektem, który pozwala na pełną
-                        kontrolę nad składnikami. Oto podstawowy przepis na domowy szampon, który jest delikatny dla skóry głowy i włosów:
-                    </p>
-                    
-                    <h3 class="text-xl font-500 text-gray-700 mt-6 mb-2">Składniki</h3>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li>1/4 szklanki płynnej kastylijskiej mydła</li>
-                        <li>1/4 szklanki destylowanej wody</li>
-                        <li>1/2 łyżeczki oleju roślinnego (np. olej jojoba, oliwa z oliwek, olej z pestek winogron)</li>
-                        <li>10-15 kropli olejku eterycznego (opcjonalnie, np. olejek lawendowy, rozmarynowy, miętowy)</li>
-                    </ul>
-                    
-                    <h3 class="text-xl font-500 text-gray-700 mt-6 mb-2">Instrukcje</h3>
-                    <ol class="list-decimal pl-5 mb-4">
-                        <li><strong>Zmieszaj składniki:</strong> Wlej kastylijskie mydło do szklanej lub plastikowej butelki. Dodaj
-                            destylowaną wodę, olej roślinny i olejek eteryczny. Delikatnie wstrząśnij butelką, aby wszystkie składniki się
-                            połączyły.</li>
-                        <li><strong>Używanie szamponu:</strong> Niewielką ilość szamponu wmasuj w mokre włosy, a następnie spłucz dokładnie
-                            ciepłą wodą.</li>
-                        <li><strong>Przechowywanie:</strong> Przechowuj szampon w szczelnie zamkniętej butelce. Przed każdym użyciem
-                            wstrząśnij, aby składniki się wymieszały.</li>
-                    </ol>
-                    
-                    <h3 class="text-xl font-500 text-gray-700 mt-6 mb-2">Dodatkowe wskazówki</h3>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li>Możesz eksperymentować z różnymi olejkami eterycznymi, aby uzyskać ulubiony zapach i dodatkowe korzyści dla
-                            skóry głowy.</li>
-                        <li>Jeśli masz suche włosy, możesz dodać więcej oleju roślinnego do mieszanki.</li>
-                        <li>Aby uzyskać bardziej nawilżający szampon, dodaj 1-2 łyżki żelu z aloesu.</li>
-                    </ul>
+                      <h3>Maski regeneracyjne:</h3>
+                      <ul>
+                        <li>Szampon 4 i odżywka 5 (raz w tygodniu).<a href="https://lyko.com/no/kinessences/kinessences-gentle-shampoo--300-ml2"><button class="details-btn">szampon</button></a><a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-pure-volume"><button class="details-btn">odzywka</button></a></li>
+                      </ul>
+
+                      <h3>Serum lub olejki:</h3>
+                      <ul>
+                        <li>Odżywka 7 (rozmaryn i lawenda) do wzmocnienia cebulek włosów.<a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-true-soft" style="display: inline;"><button class="details-btn">odżywka</button></a></li>
+                        <li>Produkt 3 (szampon) lub odżywka 3 jako ochrona przed uszkodzeniami.<a href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-shampoo-1000ml" style="display: inline;"><button class="details-btn">szampon</button></a></li>
+                      </ul>
+
+                      <h3>Stylizacja i ochrona:</h3>
+                      <ul>
+                        <li>Szampon 3 i odżywka 3 z dodatkowymi antyoksydantami i proteinami.<a href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-shampoo-1000ml" style="display: inline;"><button class="details-btn">szampon</button></a><a href="https://lyko.com/no/kerastase/k-rastase-fondant-renforcateur-200ml" style="display: inline;"><button class="details-btn">odżywka</button></a></li>
+                      </ul>
+                    </div>
                     
                 </div>
-            </div>
-
-                                                                    <!-- ODZYWIANIE -->
-            <div class="tab-pane fade" id="odzywianie" role="tabpanel" aria-labelledby="odzywianie-tab">
                 <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Moja rutyna</h1>
-                    <p class="mb-1">Odżywka - <strong>Kérastase Genesis</strong> (po myciu)</p>
-                      <div class="container">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <p>Częstotliwość stosowania:</p>
-                          <ul class="custom-list mb-4">
-                            <li><small>Stosuj przy każdym myciu włosów, zazwyczaj 2-3 razy w tygodniu.</small></li>
-                            <li><small>W przypadku bardzo suchych lub zniszczonych włosów możesz używać po każdym myciu.</small></li>
-                            <li><small>Dla włosów normalnych lub lekko suchych wystarczy 1-2 razy w tygodniu.</small></li>
-                            <li><small>Unikaj codziennego stosowania, chyba że masz ekstremalnie suche włosy lub zaleci to fryzjer.</small></li>
-                            <li><small>Obserwuj reakcję swoich włosów - jeśli stają się ciężkie lub przetłuszczone, zmniejsz częstotliwość użycia.</small></li>
-                            <li><small>Dostosuj częstotliwość do typu i stanu Twoich włosów, obserwując ich reakcję na produkt.</small></li>
-                          </ul>
-                        </div>
-                        <div class="col-md-6">
-                          <p>Sposób użycia:</p>
-                          <ul class="custom-list mb-4">
-                            <li><small>Umyj włosy szamponem i delikatnie osusz ręcznikiem.</small></li>
-                            <li><small>Wyciśnij niewielką ilość odżywki na dłoń (ilość zależy od długości i gęstości włosów).</small></li>
-                            <li><small>Rozprowadź równomiernie odżywkę na wilgotnych włosach, skupiając się na długościach i końcówkach.</small></li>
-                            <li><small>Delikatnie wmasuj produkt we włosy.</small></li>
-                            <li><small>Pozostaw na 2-3 minuty, aby składniki mogły zadziałać.</small></li>
-                            <li><small>Dokładnie spłucz letnią wodą.</small></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-            </div>
-                    <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-                        <p class="mb-1">Odżywka - <strong>Maria Nila True Soft</strong> (po myciu)</p>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p>Częstotliwość stosowania:</p>
-                                    <ul class="custom-list mb-4">
-                                        <li><small>Stosuj przy każdym myciu włosów, zazwyczaj 2-3 razy w tygodniu.</small></li>
-                                        <li><small>Dla włosów bardzo suchych lub zniszczonych możesz używać po każdym myciu, aby je odżywić.</small></li>
-                                        <li><small>Dla włosów normalnych wystarczy 1-2 razy w tygodniu.</small></li>
-                                        <li><small>Jeśli zauważysz, że włosy stają się zbyt obciążone, zmniejsz częstotliwość stosowania.</small></li>
-                                        <li><small>Dostosuj częstotliwość do rodzaju i potrzeb swoich włosów.</small></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Sposób użycia:</p>
-                                    <ul class="custom-list mb-4">
-                                        <li><small>Umyj włosy odpowiednim szamponem, najlepiej z linii **Maria Nila True Soft**.</small></li>
-                                        <li><small>Delikatnie osusz włosy ręcznikiem, pozostawiając je lekko wilgotne.</small></li>
-                                        <li><small>Nałóż niewielką ilość odżywki na dłoń (ilość zależy od długości i gęstości włosów).</small></li>
-                                        <li><small>Rozprowadź odżywkę równomiernie na wilgotnych włosach, koncentrując się na długościach i końcówkach. Unikaj nakładania na skórę głowy.</small></li>
-                                        <li><small>Pozostaw na włosach na 3-5 minut, aby składniki aktywne mogły zadziałać.</small></li>
-                                        <li><small>Dokładnie spłucz odżywkę letnią wodą.</small></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <div>
+                      <h2 style="display: flex; justify-content: center; align-items: center;">Plan pielęgnacji włosów suchych:</h2>
+
+                      <h3>1. Codzienne mycie i nawilżenie</h3>
+                      <h4>Szampon:</h4>
+                      <ul>
+                        <li><strong>Szampon 1:</strong> Zawiera glicerynę, aloes i masło shea, które intensywnie nawilżają i łagodzą skórę głowy.</li>
+                        <li><strong>Szampon 2:</strong> Dzięki olejowi słonecznikowemu i hydrolizowanym proteinom wzmacnia włosy, zapobiegając ich łamliwości.<a href="https://lyko.com/no/maria-nila/maria-nila-palett-shampoo-true-soft"><button class="details-btn">szampon</button></a></li>
+                      </ul>
+                      <h4>Odżywka:</h4>
+                      <ul>
+                        <li><strong>Odżywka 1:</strong> Z gliceryną, aloesem, olejem jojoba i witaminą E — idealna do codziennego nawilżania.</li>
+                        <li><strong>Odżywka 2:</strong> Z aloesem i olejem słonecznikowym, regeneruje włosy suche i zniszczone.<a href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-conditioner-300"><button class="details-btn">odżywka</button></a></li>
+                      </ul>
+
+                      <h3>2. Intensywna regeneracja (1–2 razy w tygodniu)</h3>
+                      <h4>Maska regeneracyjna:</h4>
+                      <ul>
+                        <li><strong>Szampon 4:</strong> Z olejem z oliwek, wodorostami i bambusem — odżywia i regeneruje włosy.<a href="https://lyko.com/no/kinessences/kinessences-gentle-shampoo--300-ml2"><button class="details-btn">szampon</button></a></li>
+                        <li><strong>Odżywka 5:</strong> Z oliwą z oliwek, olejem moringa i hydrolizowanym białkiem pszenicy — głęboko regeneruje strukturę włosów.<a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-pure-volume"><button class="details-btn">odżywka</button></a></li>
+                      </ul>
+                      <h4>Olejowanie:</h4>
+                      <ul>
+                        <li><strong>Odżywka 6:</strong> Z olejem arganowym i rumiankiem, nawilża i poprawia elastyczność włosów.<a href="https://lyko.com/no/moroccanoil/moroccanoil-hydration-conditioner-500ml"><button class="details-btn">odżywka</button></a></li>
+                      </ul>
+
+                      <h3>3. Ochrona przed uszkodzeniami</h3>
+                      <h4>Produkty do ochrony:</h4>
+                      <ul>
+                        <li><strong>Szampon 3:</strong> Z witaminą E, olejem słonecznikowym i ekstraktem z szarotki alpejskiej, chroni przed czynnikami zewnętrznymi.<a href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-shampoo-1000ml"><button class="details-btn">szampon</button></a></li>
+                        <li><strong>Odżywka 3:</strong> Z gliceryną, olejem sojowym i słonecznikowym — dodatkowa bariera ochronna dla włosów suchych.<a href="https://lyko.com/no/kerastase/k-rastase-fondant-renforcateur-200ml"><button class="details-btn">odżywka</button></a></li>
+                      </ul>
+                      <h4>Po stylizacji:</h4>
+                      <ul>
+                        <li><strong>Odżywka 7:</strong> Olejki lawendowy i rozmarynowy łagodzą skórę głowy, dodając włosom blasku i miękkości.<a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-true-soft"><button class="details-btn">odżywka</button></a></li>
+                      </ul>
+
+                      <h3>4. Nawilżenie i odżywienie na noc (raz w tygodniu)</h3>
+                      <h4>Nocna maska:</h4>
+                      <ul>
+                        <li><strong>Odżywka 4:</strong> Z olejem z oliwek, moringą i bambusem, działa przez noc, głęboko nawilżając i regenerując włosy.<a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-structure-repair"><button class="details-btn">odżywka</button></a></li>
+                      </ul>
+                      <h4>Serum końcówek:</h4>
+                      <ul>
+                        <li><strong>Odżywka 1:</strong> Olej jojoba doskonale chroni końcówki przed rozdwajaniem.<a href="https://lyko.com/no/briogeo/briogeo-be-gentle-be-kind-aloe---oat-milk-ultra-soothing-co"><button class="details-btn">odżywka</button></a></li>
+                      </ul>
+
+                      <h3>5. Ogólne wskazówki dla włosów suchych</h3>
+                      <ul>
+                        <li>Unikaj gorącej wody — wybierz letnią lub chłodną, aby nie przesuszać włosów.</li>
+                        <li>Olejowanie włosów — stosuj odżywkę 6 jako pre-maska przed myciem.</li>
+                        <li>Używaj delikatnych produktów — szampony bez agresywnych detergentów (np. szampon 1 lub 2).</li>
+                        <li>Zabezpieczaj końcówki — używaj odżywki 7 lub oleju jojoba (odżywka 1) po myciu.</li>
+                      </ul>
+
+                      <h3>Podsumowanie produktów:</h3>
+                      <ul>
+                        <li><strong>Codziennie:</strong> Szampon 1 + Odżywka 1. (brak na sklepach)</li>
+                        <li><strong>Regeneracja (1–2 razy/tyg):</strong> Szampon 4 + Odżywka 5.</li>
+                        <li><strong>Ochrona:</strong> Szampon 3 + Odżywka 3.</li>
+                        <li><strong>Olejowanie:</strong> Odżywka 6 (raz w tygodniu).</li>
+                        <li><strong>Nocna pielęgnacja:</strong> Odżywka 4 + serum na końcówki z odżywki 1.</li>
+                      </ul>
+
+                      <p>To kompleksowy plan, który przywróci suche włosy do zdrowego, miękkiego i lśniącego stanu. 😊 Jeśli potrzebujesz dodatkowych wskazówek, daj znać!</p>
                     </div>
 
+                </div>
             </div>
 
                                                                     <!-- WCIERKI -->
@@ -602,6 +526,30 @@
                 </a>
                 - Delikatne mycie każdego rodzaju włosów, bez wysuszania.</p>
 
+                <section>
+    <h2>Podsumowanie</h2>
+    <p>Do pełnej pielęgnacji włosów polecam następujące połączenie:</p>
+    <ul>
+        <li>
+            <strong>Codzienna pielęgnacja:</strong> 
+            Produkty <strong>2</strong> i <strong>6</strong> (nawilżenie i regeneracja).
+        </li>
+        <li>
+            <strong>Maska/Serum regenerujące:</strong> 
+            Produkt <strong>4</strong>.
+        </li>
+        <li>
+            <strong>Serum na wzrost włosów:</strong> 
+            Produkt <strong>3</strong>.
+        </li>
+        <li>
+            <strong>Zamknięcie łusek:</strong> 
+            Produkt <strong>1</strong> (z octem jabłkowym).
+        </li>
+    </ul>
+</section>
+
+
 
                                                                 <!-- WCIERKI -->
                 <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Wcierki</h2>
@@ -690,6 +638,16 @@
                     <span class="mt-8" style="display: inline;">L'Occitane Aromat</span>
                 </a>
                 - Odżywka została opracowana specjalnie dla osób często myjących włosy. Delikatna formuła szanuje naturalną równowagę skóry głowy i nadaje się do codziennego użytku. Delikatnie usuwa kołtuny i pozostawia włosy miękkie i elastyczne. Zawiera mieszankę olejków eterycznych z rumianku, lawendy, rozmarynu, cytryny i pomarańczy.</p>
+
+                <section>
+  <h2>Podsumowanie:</h2>
+  <ul>
+    <li><strong>Codzienna pielęgnacja:</strong> Produkty 1 i 2 (nawilżenie i ochrona).</li>
+    <li><strong>Maska regeneracyjna:</strong> Produkt 5.</li>
+    <li><strong>Serum stymulujące wzrost:</strong> Produkt 2 lub 7.</li>
+    <li><strong>Ochrona przed stylizacją:</strong> Produkt 3.</li>
+  </ul>
+</section>
 
                 <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Inne</h2>
                 <a href="https://www.naturalbeauty.no/products/dr-pen-ultima-m8-a6s-nano-nal">
