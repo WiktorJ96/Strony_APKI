@@ -1,675 +1,421 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dziennik Pielęgnacji Włosów</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.10.1/main.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@5.10.1/main.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="rutyna.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dziennik Pielęgnacji Włosów</title>
+
+  <!-- Google Fonts & Ikony -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="rutyna.css">
+
 </head>
-<style>
-  .custom-list {
-    list-style-type: disc;
-    padding-left: 20px;
-  }
-  .custom-list li {
-    margin-bottom: 8px;
-  }
-</style>
-<body class="bg-gray-100 text-gray-800">
 
-    <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-        <h1 class="text-3xl font-800 text-center text-gray-800 mb-6">Dziennik Pielęgnacji Włosów</h1>
+<body> 
+  <!-- ====== Nagłówek & zakładki ====== -->
+  <header class="bg-white shadow-sm sticky-top">
+    <div class="container py-3">
+      <h1 class="text-center display-6 mb-3">Dziennik Pielęgnacji Włosów</h1>
 
-        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="mycie-odzywianie-tab" data-toggle="tab" href="#mycie-odzywianie" role="tab" aria-controls="mycie-odzywianie" aria-selected="true">Mycie&Odżywianie</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="wcierki-tab" data-toggle="tab" href="#wcierki" role="tab" aria-controls="wcierki" aria-selected="false">Wcierki</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="zabieg-tab" data-toggle="tab" href="#zabieg" role="tab" aria-controls="zabieg" aria-selected="false">Zabieg</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="olejowanie-tab" data-toggle="tab" href="#olejowanie" role="tab" aria-controls="olejowanie" aria-selected="false">Olejowanie</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="inne-tab" data-toggle="tab" href="#inne" role="tab" aria-controls="inne" aria-selected="false">Inne</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="produkty-tab" data-toggle="tab" href="#produkty" role="tab" aria-controls="produkty" aria-selected="false">Produkty</a>
-            </li>
-        </ul>
-
-        <div class="tab-content" id="myTabContent">
-
-                                                                    <!-- MYCIE&ODŻYWIANIE -->
-            <div class="tab-pane fade show active" id="mycie-odzywianie" role="tabpanel" aria-labelledby="mycie-odzywianie-tab">
-                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-                    <div>
-                      <h2 style="display: flex; justify-content: center; align-items: center;">Plan pielęgnacji włosów</h2>
-                      
-                      <h3>Codzienna pielęgnacja:</h3>
-                      <ul>
-                        <li>Szampon 1 (nawilżenie, ochrona) lub 2 (regeneracja).<a href="https://lyko.com/no/maria-nila/maria-nila-palett-shampoo-true-soft" style="display: inline;"><button class="details-btn">szampon</button></a></li>
-                        <li>Odżywka 1 (nawilżenie) lub 2 (wzmocnienie i regeneracja).<a href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-conditioner-300" style="display: inline;"><button class="details-btn">odżywka</button></a></li>
-                      </ul>
-
-                      <h3>Maski regeneracyjne:</h3>
-                      <ul>
-                        <li>Szampon 4 i odżywka 5 (raz w tygodniu).<a href="https://lyko.com/no/kinessences/kinessences-gentle-shampoo--300-ml2"><button class="details-btn">szampon</button></a><a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-pure-volume"><button class="details-btn">odzywka</button></a></li>
-                      </ul>
-
-                      <h3>Serum lub olejki:</h3>
-                      <ul>
-                        <li>Odżywka 7 (rozmaryn i lawenda) do wzmocnienia cebulek włosów.<a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-true-soft" style="display: inline;"><button class="details-btn">odżywka</button></a></li>
-                        <li>Produkt 3 (szampon) lub odżywka 3 jako ochrona przed uszkodzeniami.<a href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-shampoo-1000ml" style="display: inline;"><button class="details-btn">szampon</button></a></li>
-                      </ul>
-
-                      <h3>Stylizacja i ochrona:</h3>
-                      <ul>
-                        <li>Szampon 3 i odżywka 3 z dodatkowymi antyoksydantami i proteinami.<a href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-shampoo-1000ml" style="display: inline;"><button class="details-btn">szampon</button></a><a href="https://lyko.com/no/kerastase/k-rastase-fondant-renforcateur-200ml" style="display: inline;"><button class="details-btn">odżywka</button></a></li>
-                      </ul>
-                    </div>
-                    
-                </div>
-                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-                    <div>
-                      <h2 style="display: flex; justify-content: center; align-items: center;">Plan pielęgnacji włosów suchych:</h2>
-
-                      <h3>1. Codzienne mycie i nawilżenie</h3>
-                      <h4>Szampon:</h4>
-                      <ul>
-                        <li><strong>Szampon 1:</strong> Zawiera glicerynę, aloes i masło shea, które intensywnie nawilżają i łagodzą skórę głowy.</li>
-                        <li><strong>Szampon 2:</strong> Dzięki olejowi słonecznikowemu i hydrolizowanym proteinom wzmacnia włosy, zapobiegając ich łamliwości.<a href="https://lyko.com/no/maria-nila/maria-nila-palett-shampoo-true-soft"><button class="details-btn">szampon</button></a></li>
-                      </ul>
-                      <h4>Odżywka:</h4>
-                      <ul>
-                        <li><strong>Odżywka 1:</strong> Z gliceryną, aloesem, olejem jojoba i witaminą E — idealna do codziennego nawilżania.</li>
-                        <li><strong>Odżywka 2:</strong> Z aloesem i olejem słonecznikowym, regeneruje włosy suche i zniszczone.<a href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-conditioner-300"><button class="details-btn">odżywka</button></a></li>
-                      </ul>
-
-                      <h3>2. Intensywna regeneracja (1–2 razy w tygodniu)</h3>
-                      <h4>Maska regeneracyjna:</h4>
-                      <ul>
-                        <li><strong>Szampon 4:</strong> Z olejem z oliwek, wodorostami i bambusem — odżywia i regeneruje włosy.<a href="https://lyko.com/no/kinessences/kinessences-gentle-shampoo--300-ml2"><button class="details-btn">szampon</button></a></li>
-                        <li><strong>Odżywka 5:</strong> Z oliwą z oliwek, olejem moringa i hydrolizowanym białkiem pszenicy — głęboko regeneruje strukturę włosów.<a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-pure-volume"><button class="details-btn">odżywka</button></a></li>
-                      </ul>
-                      <h4>Olejowanie:</h4>
-                      <ul>
-                        <li><strong>Odżywka 6:</strong> Z olejem arganowym i rumiankiem, nawilża i poprawia elastyczność włosów.<a href="https://lyko.com/no/moroccanoil/moroccanoil-hydration-conditioner-500ml"><button class="details-btn">odżywka</button></a></li>
-                      </ul>
-
-                      <h3>3. Ochrona przed uszkodzeniami</h3>
-                      <h4>Produkty do ochrony:</h4>
-                      <ul>
-                        <li><strong>Szampon 3:</strong> Z witaminą E, olejem słonecznikowym i ekstraktem z szarotki alpejskiej, chroni przed czynnikami zewnętrznymi.<a href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-shampoo-1000ml"><button class="details-btn">szampon</button></a></li>
-                        <li><strong>Odżywka 3:</strong> Z gliceryną, olejem sojowym i słonecznikowym — dodatkowa bariera ochronna dla włosów suchych.<a href="https://lyko.com/no/kerastase/k-rastase-fondant-renforcateur-200ml"><button class="details-btn">odżywka</button></a></li>
-                      </ul>
-                      <h4>Po stylizacji:</h4>
-                      <ul>
-                        <li><strong>Odżywka 7:</strong> Olejki lawendowy i rozmarynowy łagodzą skórę głowy, dodając włosom blasku i miękkości.<a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-true-soft"><button class="details-btn">odżywka</button></a></li>
-                      </ul>
-
-                      <h3>4. Nawilżenie i odżywienie na noc (raz w tygodniu)</h3>
-                      <h4>Nocna maska:</h4>
-                      <ul>
-                        <li><strong>Odżywka 4:</strong> Z olejem z oliwek, moringą i bambusem, działa przez noc, głęboko nawilżając i regenerując włosy.<a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-structure-repair"><button class="details-btn">odżywka</button></a></li>
-                      </ul>
-                      <h4>Serum końcówek:</h4>
-                      <ul>
-                        <li><strong>Odżywka 1:</strong> Olej jojoba doskonale chroni końcówki przed rozdwajaniem.<a href="https://lyko.com/no/briogeo/briogeo-be-gentle-be-kind-aloe---oat-milk-ultra-soothing-co"><button class="details-btn">odżywka</button></a></li>
-                      </ul>
-
-                      <h3>5. Ogólne wskazówki dla włosów suchych</h3>
-                      <ul>
-                        <li>Unikaj gorącej wody — wybierz letnią lub chłodną, aby nie przesuszać włosów.</li>
-                        <li>Olejowanie włosów — stosuj odżywkę 6 jako pre-maska przed myciem.</li>
-                        <li>Używaj delikatnych produktów — szampony bez agresywnych detergentów (np. szampon 1 lub 2).</li>
-                        <li>Zabezpieczaj końcówki — używaj odżywki 7 lub oleju jojoba (odżywka 1) po myciu.</li>
-                      </ul>
-
-                      <h3>Podsumowanie produktów:</h3>
-                      <ul>
-                        <li><strong>Codziennie:</strong> Szampon 1 + Odżywka 1. (brak na sklepach)</li>
-                        <li><strong>Regeneracja (1–2 razy/tyg):</strong> Szampon 4 + Odżywka 5.</li>
-                        <li><strong>Ochrona:</strong> Szampon 3 + Odżywka 3.</li>
-                        <li><strong>Olejowanie:</strong> Odżywka 6 (raz w tygodniu).</li>
-                        <li><strong>Nocna pielęgnacja:</strong> Odżywka 4 + serum na końcówki z odżywki 1.</li>
-                      </ul>
-
-                      <p>To kompleksowy plan, który przywróci suche włosy do zdrowego, miękkiego i lśniącego stanu. 😊 Jeśli potrzebujesz dodatkowych wskazówek, daj znać!</p>
-                    </div>
-
-                </div>
-            </div>
-
-                                                                    <!-- WCIERKI -->
-            <div class="tab-pane fade" id="wcierki" role="tabpanel" aria-labelledby="wcierki-tab">
-                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Moja rutyna</h1>
-                    <p class="mb-1">Wcierka - <strong>Hjärtligt</strong></p>
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <p>Częstotliwość stosowania:</p>
-                          <ul class="custom-list mb-4">
-                            <li><small>Stosuj 2-3 razy w tygodniu dla optymalnych rezultatów.</small></li>
-                            <li><small>W przypadku bardzo osłabionych włosów możesz używać codziennie przez krótki okres.</small></li>
-                            <li><small>Dla włosów normalnych wystarczy 1-2 razy w tygodniu.</small></li>
-                            <li><small>Unikaj nadmiernego stosowania, aby nie obciążać skóry głowy.</small></li>
-                            <li><small>Obserwuj reakcję swoich włosów - jeśli pojawi się podrażnienie, zmniejsz częstotliwość.</small></li>
-                            <li><small>Dostosuj częstotliwość do typu skóry głowy i stanu włosów.</small></li>
-                          </ul>
-                        </div>
-                        <div class="col-md-6">
-                          <p>Sposób użycia:</p>
-                          <ul class="custom-list mb-4">
-                            <li><small>Umyj włosy szamponem i osusz ręcznikiem lub pozostaw lekko wilgotne.</small></li>
-                            <li><small>Podziel włosy na sekcje dla łatwiejszej aplikacji.</small></li>
-                            <li><small>Nałóż niewielką ilość wcierki bezpośrednio na skórę głowy.</small></li>
-                            <li><small>Delikatnie wmasuj opuszkami palców, wykonując koliste ruchy.</small></li>
-                            <li><small>Rozprowadź produkt równomiernie po całej skórze głowy.</small></li>
-                            <li><small>Nie spłukuj wcierki, pozwól jej wchłonąć się w skórę.</small></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-                    <p class="mb-1">Wcierka - <strong>Kérastase Genesis Serum Anti-Chute Fortifiant</strong> scalp serum 90 ml</p>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p>Częstotliwość stosowania:</p>
-                                <ul class="custom-list mb-4">
-                                    <li><small>Stosuj codziennie dla najlepszych rezultatów.</small></li>
-                                    <li><small>Aplikuj rano lub wieczorem, w zależności od preferencji.</small></li>
-                                    <li><small>Można stosować na mokre lub suche włosy.</small></li>
-                                    <li><small>W przypadku bardzo intensywnej kuracji można stosować dwa razy dziennie.</small></li>
-                                    <li><small>Kontynuuj stosowanie przez co najmniej 3 miesiące dla widocznych efektów.</small></li>
-                                    <li><small>Po osiągnięciu pożądanych rezultatów można zmniejszyć częstotliwość do 3-4 razy w tygodniu.</small></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Sposób użycia:</p>
-                                <ul class="custom-list mb-4">
-                                    <li><small>Rozpocznij od umytej i osuszonej ręcznikiem skóry głowy.</small></li>
-                                    <li><small>Podziel włosy na sekcje dla równomiernej aplikacji.</small></li>
-                                    <li><small>Nałóż 3-4 krople serum bezpośrednio na skórę głowy w każdej sekcji.</small></li>
-                                    <li><small>Delikatnie wmasuj opuszkami palców, wykonując koliste ruchy.</small></li>
-                                    <li><small>Rozprowadź produkt równomiernie po całej skórze głowy.</small></li>
-                                    <li><small>Nie spłukuj serum, pozwól mu wchłonąć się w skórę.</small></li>
-                                    <li><small>Stylizuj włosy jak zwykle lub pozostaw do wyschnięcia naturalnie.</small></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>                           
-                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-                    <p class="mb-1">Wcierka - <strong>Copenhagen Grooming Hair</strong></p>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p>Częstotliwość stosowania:</p>
-                                <ul class="custom-list mb-4">
-                                    <li><small>Stosuj raz lub dwa razy dziennie, zgodnie z zaleceniami producenta.</small></li>
-                                    <li><small>Dostosuj częstotliwość do swoich potrzeb oraz reakcji włosów i skóry głowy.</small></li>
-                                    <li><small>Przy regularnym stosowaniu efekty mogą być widoczne po kilku tygodniach.</small></li>
-                                    <li><small>Unikaj nadmiernego stosowania, aby nie przeciążyć skóry głowy i włosów.</small></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <p>Sposób użycia:</p>
-                                <ul class="custom-list mb-4">
-                                    <li><small>Przed zastosowaniem upewnij się, że włosy i skóra głowy są czyste i lekko wilgotne lub suche.</small></li>
-                                    <li><small>Nałóż niewielką ilość wcierki bezpośrednio na skórę głowy, koncentrując się na problematycznych obszarach, takich jak linia włosów i zakola.</small></li>
-                                    <li><small>Delikatnie wmasuj wcierkę w skórę głowy opuszkami palców, wykonując koliste ruchy przez około 1-2 minuty.</small></li>
-                                    <li><small>Pozostaw wcierkę na skórze - nie spłukuj jej, pozwól na wchłonięcie składników aktywnych.</small></li>
-                                    <li><small>Możesz kontynuować stylizację włosów jak zwykle po nałożeniu wcierki.</small></li>
-                                    <li><small>Obserwuj reakcję skóry głowy i włosów - w razie podrażnienia zmniejsz częstotliwość stosowania.</small></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-                                                                    <!-- ZABIEG -->
-            <div class="tab-pane fade" id="zabieg" role="tabpanel" aria-labelledby="zabieg-tab">
-                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Iglowanie Skóry Głowy za Pomocą Dermapena</h1>
-                    <p class="mb-4">Znane również jako mikronakłuwanie, może być skuteczną metodą stymulacji wzrostu włosów i poprawy
-                        zdrowia skóry głowy. Oto szczegółowy przewodnik, jak najlepiej stosować dermapen i w jakich odstępach czasu:</p>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Przygotowanie</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Sterylizacja:</strong> Upewnij się, że dermapen i igły są sterylne, aby uniknąć infekcji. Zawsze
-                            używaj jednorazowych igieł.</li>
-                        <li><strong>Czysta skóra głowy:</strong> Przed zabiegiem dokładnie umyj skórę głowy, aby usunąć wszelkie
-                            zanieczyszczenia.</li>
-                        <li><strong>Znieczulenie miejscowe:</strong> Jeśli masz niski próg bólu, możesz użyć kremu znieczulającego na
-                            skórę głowy przed rozpoczęciem zabiegu.</li>
-                    </ul>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Procedura</h2>
-                    <ol class="list-decimal pl-5 mb-4">
-                        <li><strong>Ustawienie dermapena:</strong> Ustaw długość igieł na około 0,25 mm do 1,5 mm, w zależności od
-                            obszaru skóry głowy i poziomu komfortu. Zazwyczaj dla skóry głowy stosuje się długości od 0,5 mm do 1,5 mm.
-                        </li>
-                        <li><strong>Nakłuwanie:</strong> Delikatnie przesuwaj dermapen po skórze głowy, tworząc równomierne linie w
-                            różnych kierunkach (horyzontalnie, wertykalnie i ukośnie). Upewnij się, że każda część skóry jest
-                            jednokrotnie pokryta.</li>
-                        <li><strong>Intensywność:</strong> Zabieg powinien trwać około 10-20 minut, w zależności od wielkości obszaru.
-                        </li>
-                    </ol>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Po zabiegu</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Unikaj mycia:</strong> Nie myj głowy przez co najmniej 24 godziny po zabiegu.</li>
-                        <li><strong>Pielęgnacja:</strong> Stosuj delikatne produkty pielęgnacyjne, unikając drażniących składników.</li>
-                        <li><strong>Unikaj słońca:</strong> Chron skórę głowy przed bezpośrednim działaniem promieni słonecznych.</li>
-                    </ul>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Odstępy czasowe</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Pierwszy miesiąc:</strong> Zabiegi można przeprowadzać co 7-14 dni, w zależności od tolerancji
-                            skóry.</li>
-                        <li><strong>Kolejne miesiące:</strong> Po pierwszym miesiącu można zmniejszyć częstotliwość do raz na miesiąc,
-                            aby utrzymać efekty i wspierać zdrowy wzrost włosów.</li>
-                    </ul>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Uwagi dodatkowe</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Konsultacja z profesjonalistą:</strong> Zawsze warto skonsultować się z dermatologiem lub
-                            trychologiem przed rozpoczęciem jakiejkolwiek procedury mikronakłuwania, aby upewnić się, że jest ona
-                            odpowiednia dla Twojej skóry głowy.</li>
-                        <li><strong>Monitorowanie efektów:</strong> Regularnie monitoruj stan skóry głowy i włosów, aby ocenić
-                            skuteczność zabiegu i dostosować długość igieł oraz częstotliwość zabiegów, jeśli to konieczne.</li>
-                    </ul>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Korzyści</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Poprawa krążenia:</strong> Mikronakłuwanie zwiększa krążenie krwi w skórze głowy, co może wspierać
-                            wzrost włosów.</li>
-                        <li><strong>Stymulacja kolagenu:</strong> Zabieg wspomaga produkcję kolagenu, co może poprawić zdrowie skóry
-                            głowy.</li>
-                    </ul>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Potencjalne ryzyko</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Podrażnienia:</strong> Może wystąpić podrażnienie lub zaczerwienienie skóry, które zwykle ustępuje w
-                            ciągu kilku dni.</li>
-                        <li><strong>Infekcje:</strong> Niezachowanie odpowiednich standardów higieny może prowadzić do infekcji.</li>
-                    </ul>
-                
-                    <p class="mt-8">Stosowanie dermapena w pielęgnacji skóry głowy wymaga odpowiedniej techniki i regularności, aby
-                        uzyskać optymalne rezultaty. Regularne monitorowanie i dostosowywanie zabiegów pomoże osiągnąć najlepsze efekty
-                        w stymulacji wzrostu włosów.</p>
-                </div>
-            </div>
-
-                                                                    <!-- OLEJOWANIE -->
-            <div class="tab-pane fade" id="olejowanie" role="tabpanel" aria-labelledby="olejowanie-tab">
-                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Olejowanie włosów - Poprawa kondycji i wzrost</h1>
-                    <p class="mb-4">Olejowanie włosów to jedna z najstarszych i najbardziej efektywnych metod pielęgnacji włosów.
-                        Stosowanie odpowiednich olejów może poprawić ich kondycję, nawilżenie, blask i wspomóc wzrost. Oto szczegółowy
-                        przewodnik na temat olejowania włosów:</p>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Jak olejować włosy?</h2>
-                    <ol class="list-decimal pl-5 mb-4">
-                        <li><strong>Wybór oleju:</strong>
-                            <ul class="list-disc pl-5 mb-4">
-                                <li><strong>Olej kokosowy:</strong> Świetny do głębokiego nawilżania, szczególnie dla suchych i
-                                    zniszczonych włosów.</li>
-                                <li><strong>Olej rycynowy:</strong> Stymuluje wzrost włosów, zagęszcza i wzmacnia.</li>
-                                <li><strong>Olej arganowy:</strong> Odżywia, nadaje blasku i działa przeciwstarzeniowo.</li>
-                                <li><strong>Olej jojoba:</strong> Reguluje produkcję sebum, nawilża i wzmacnia.</li>
-                                <li><strong>Olej migdałowy:</strong> Lekki, idealny do nawilżania i zmiękczania włosów.</li>
-                            </ul>
-                        </li>
-                        <li><strong>Sposób aplikacji:</strong>
-                            <ul class="list-disc pl-5 mb-4">
-                                <li><strong>Rozczesanie włosów:</strong> Przed nałożeniem oleju rozczesz włosy, aby uniknąć plątania.
-                                </li>
-                                <li><strong>Podgrzanie oleju:</strong> Lekko podgrzej olej (nie powinien być gorący), aby łatwiej się
-                                    wchłaniał.</li>
-                                <li><strong>Aplikacja:</strong> Nałóż olej na skórę głowy i włosy, masując delikatnie opuszkami palców.
-                                    Rozprowadź olej na całej długości włosów, szczególnie na końcówki.</li>
-                                <li><strong>Czas trzymania:</strong> Pozostaw olej na włosach przez co najmniej 1 godzinę, ale najlepiej
-                                    na całą noc.</li>
-                            </ul>
-                        </li>
-                        <li><strong>Zmywanie oleju:</strong>
-                            <ul class="list-disc pl-5 mb-4">
-                                <li><strong>Szampon:</strong> Użyj delikatnego szamponu bez siarczanów, aby dokładnie umyć włosy. Może
-                                    być konieczne dwukrotne mycie.</li>
-                                <li><strong>Odżywka:</strong> Nałóż odżywkę, aby dodatkowo nawilżyć i wygładzić włosy.</li>
-                            </ul>
-                        </li>
-                    </ol>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Czym olejować włosy?</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Naturalne oleje:</strong> Używaj czystych, nierafinowanych olejów, aby zapewnić maksymalne korzyści.
-                        </li>
-                        <li><strong>Mieszanki olejów:</strong> Możesz tworzyć mieszanki olejów, aby skorzystać z ich różnych
-                            właściwości.</li>
-                        <li><strong>Gotowe produkty:</strong> Istnieją gotowe mieszanki olejowe dostępne w sklepach, które są specjalnie
-                            skomponowane do różnych typów włosów.</li>
-                    </ul>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Jak często olejować włosy?</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Suche i zniszczone włosy:</strong> 2-3 razy w tygodniu.</li>
-                        <li><strong>Normalne włosy:</strong> 1-2 razy w tygodniu.</li>
-                        <li><strong>Tłuste włosy:</strong> 1 raz w tygodniu lub rzadziej, aby nie obciążać włosów.</li>
-                    </ul>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Ogólne informacje i wskazówki</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Regularność:</strong> Kluczem do sukcesu jest regularność. Nawet najlepszy olej nie zadziała, jeśli
-                            będzie stosowany sporadycznie.</li>
-                        <li><strong>Delikatność:</strong> Bądź delikatny podczas aplikacji i zmywania oleju, aby nie uszkodzić włosów.
-                        </li>
-                        <li><strong>Kombinacja z innymi metodami:</strong> Połącz olejowanie z innymi metodami pielęgnacji, takimi jak
-                            maseczki, odżywki czy zdrowa dieta, aby uzyskać najlepsze efekty.</li>
-                        <li><strong>Dieta:</strong> Pamiętaj, że zdrowa dieta bogata w witaminy i minerały również wpływa na kondycję
-                            włosów.</li>
-                        <li><strong>Unikanie nadmiernego stylizowania:</strong> Ogranicz użycie suszarek, prostownic i lokówek, które
-                            mogą wysuszać i uszkadzać włosy.</li>
-                    </ul>
-                
-                    <p class="mt-8">Olejowanie włosów to naturalna i skuteczna metoda poprawy ich kondycji i wspomagania wzrostu.
-                        Regularne stosowanie odpowiednich olejów, zgodnie z powyższymi wskazówkami, przyniesie zauważalne efekty w
-                        postaci zdrowszych, mocniejszych i bardziej lśniących włosów.</p>
-                </div>
-            </div>
-
-                                                            <!-- INNE -->
-            <div class="tab-pane fade" id="inne" role="tabpanel" aria-labelledby="inne-tab">
-                <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-                    <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Naświetlanie światłem podczerwonym - Wzrost włosów
-                    </h1>
-                    <p class="mb-4">Naświetlanie światłem podczerwonym, znane również jako terapia światłem niskiej intensywności
-                        (LLLT), może stymulować mieszki włosowe i poprawiać krążenie krwi w skórze głowy. Oto szczegółowy przewodnik,
-                        jak stosować tę metodę:</p>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Krok 1: Przygotowanie</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Wybór urządzenia:</strong> Wybierz odpowiednie urządzenie do naświetlania światłem podczerwonym,
-                            takie jak specjalne czapki, opaski, grzebienie laserowe lub przenośne urządzenia ręczne.</li>
-                        <li><strong>Czystość skóry:</strong> Upewnij się, że skóra głowy jest czysta. Przed naświetlaniem umyj włosy i
-                            skórę głowy, aby usunąć wszelkie zanieczyszczenia i produkty do stylizacji.</li>
-                    </ul>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Krok 2: Naświetlanie</h2>
-                    <ol class="list-decimal pl-5 mb-4">
-                        <li><strong>Instrukcje producenta:</strong> Postępuj zgodnie z instrukcjami producenta dotyczącymi użytkowania
-                            urządzenia. Różne urządzenia mogą mieć różne specyfikacje dotyczące czasu i częstotliwości stosowania.</li>
-                        <li><strong>Czas naświetlania:</strong> Zazwyczaj sesje trwają od 10 do 30 minut. Stosuj się do zalecanego czasu
-                            naświetlania, aby uniknąć nadmiernego wystawienia skóry na działanie światła.</li>
-                        <li><strong>Częstotliwość:</strong> Standardowe zalecenia to 3-4 razy w tygodniu. Ważne jest, aby być
-                            konsekwentnym w stosowaniu terapii, ponieważ efekty mogą być widoczne dopiero po kilku tygodniach
-                            regularnego używania.</li>
-                        <li><strong>Odległość:</strong> Trzymaj urządzenie zgodnie z zaleceniami producenta, zwykle kilka centymetrów od
-                            skóry głowy. Niektóre urządzenia mogą być noszone bezpośrednio na głowie, jak czapki laserowe.</li>
-                    </ol>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Krok 3: Po naświetlaniu</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Pielęgnacja skóry:</strong> Po zakończeniu sesji naświetlania nie ma potrzeby szczególnej
-                            pielęgnacji, ale możesz zastosować delikatny środek nawilżający, jeśli skóra głowy wydaje się sucha.</li>
-                        <li><strong>Unikanie dodatkowych podrażnień:</strong> Staraj się unikać stosowania agresywnych produktów do
-                            stylizacji lub innych zabiegów chemicznych na skórze głowy w dniu naświetlania.</li>
-                    </ul>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Krok 4: Monitorowanie efektów</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Cierpliwość i regularność:</strong> Wyniki mogą pojawić się po kilku miesiącach regularnego
-                            stosowania. Ważne jest, aby być cierpliwym i systematycznym.</li>
-                        <li><strong>Dokumentacja postępów:</strong> Możesz robić zdjęcia przed rozpoczęciem terapii i co kilka tygodni,
-                            aby monitorować postępy.</li>
-                    </ul>
-                
-                    <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Środki ostrożności</h2>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li><strong>Konsultacja z lekarzem:</strong> Zawsze warto skonsultować się z dermatologiem lub trychologiem
-                            przed rozpoczęciem terapii, zwłaszcza jeśli masz jakiekolwiek schorzenia skóry głowy lub przyjmujesz leki.
-                        </li>
-                        <li><strong>Unikanie oczu:</strong> Nigdy nie kieruj światła bezpośrednio na oczy, ponieważ może to prowadzić do
-                            uszkodzenia wzroku.</li>
-                    </ul>
-                
-                    <p class="mt-8">Naświetlanie światłem podczerwonym może być skuteczną metodą wspomagającą wzrost włosów, jednak
-                        kluczem do sukcesu jest regularne i konsekwentne stosowanie terapii zgodnie z zaleceniami producenta i
-                        specjalistów.</p>
-                </div>
-            </div>
-                                                                 <!-- PRODUKTY -->
-
-
-                                                                 <!-- SZAMPONY -->
-            <div class="tab-pane fade" id="produkty" role="tabpanel" aria-labelledby="produkty-tab">
-
-                <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Szampony</h2>
-
-                <b>Miejsce 1.</b><a href="./Opisy/Szampony/Biovene_Moisture_Volume.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                <a href="https://lyko.com/no/biovene/biovene-moisture-volume-biotin---apple-cider-solid-shampoo-b" style="display: inline;">
-                    <span class="mt-8" style="display: inline;">Biovene
-                                                                Moisture Volume</span>
-                </a>
-                - Moisture Volume jest na tyle delikatny, że można go stosować codziennie i pozostawia włosy niesamowicie czyste, świeże i satysfakcjonujące. Nadaje się do każdego rodzaju włosów i jest bezpieczny dla włosów farbowanych.</p>
-                
-
-                <b>Miejsce 2.</b><a href="./Opisy/Szampony/Maria_Nila_True_Soft.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                    <a href="https://lyko.com/no/maria-nila/maria-nila-palett-shampoo-true-soft" style="display: inline;">
-                        <span class="mt-8" style="display: inline;">Maria Nila True Soft</span>
-                    </a>
-                    - Szampon bez siarczanów, stworzony specjalnie do włosów suchych i puszących się. Zawiera olej arganowy, który nawilża i
-                    wzmacnia włosy, nadając im miękkość i blask. Produkt jest również wegański i przyjazny dla środowiska.
-                </p>
-
-                <b>Miejsce 3.</b><a href="./Opisy/Szampony/Maria nila Head Hair Heal.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                    <a href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-shampoo-1000ml" style="display: inline;">
-                        <span class="mt-8" style="display: inline;">Maria Nila Hair Heal</span>
-                    </a>
-                    - Szampon przeciwzapalny, który stymuluje wzrost włosów. Pirokton olaminy i naturalny ekstrakt z aloesu leczą i zapobiegają łupieżowi oraz problemom skóry głowy. Witamina E, apigenina i peptydy pobudzają mieszki włosowe, co wspomaga wzrost włosów. Kwas oleanolowy zapobiega wypadaniu włosów.
-                </p>
-                
-                <b>Miejsce 4.</b><a href="./Opisy/Szampony/Kinessences.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                <a href="https://lyko.com/no/kinessences/kinessences-gentle-shampoo--300-ml2" style="display: inline;">
-                    <span class="mt-8" style="display: inline;">KINESSENCES
-                                                                Restore</span>
-                </a>
-                - Skoncentrowany zabieg naprawczo-wzmacniający, który w długotrwały sposób odbudowuje zniszczone włosy, głęboko odbudowując włókno włosa i przywracając zdrowie, siłę i piękno zdrowych włosów.</p>
-
-                <b>Miejsce 5.</b><a href="./Opisy/Szampony/L'Occitane Aromat.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                <a href="https://lyko.com/no/loccitane/l-occitane-aroma-gentle---balance-shampoo?fromsearch=L%27Occitane+Aroma+Gentle+%26+Balance+Shampoo" style="display: inline;">
-                    <span class="mt-8" style="display: inline;">L'Occitane
-                                                                Aromat</span>
-                </a>
-                - Delikatny szampon micelarny dla osób często myjących włosy. Delikatna formuła, wzbogacona olejkami eterycznymi (rumianek, lawenda, rozmaryn, cytryna i pomarańcza), utrzymuje naturalną równowagę w skórze głowy i pozostawia włosy czyste i naturalne.</p>
-                
-                <b>Miejsce 6.</b><a href="./Opisy/Szampony/Rituals The Ritual Of Sakura.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                <a href="https://lyko.com/no/rituals/ritual-of-sakura-shampoo-250-ml" style="display: inline;">
-                    <span class="mt-8" style="display: inline;">Rituals The Ritual Of Sakura</span>
-                </a>
-                - Nadaje się do codziennego stosowania do wszystkich rodzajów włosów, szczególnie do włosów pozbawionych życia lub cienkich. Aby uzyskać najlepsze rezultaty, stosuj w połączeniu z odżywką z tej samej kolekcji.</p>
-
-                <b>Miejsce 7.</b><a href="./Opisy/Szampony/Larsson & Lange Gentle Clean Sulfate Free.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                <a href="https://lyko.com/no/larsson--lange/larsson---lange-gentle-clean-sulfate-free-shampoo-300ml?fromsearch=Larsson+%26+Lange+Gentle+Clean+Sulfate+Free" style="display: inline;">
-                    <span class="mt-8" style="display: inline;">Larsson & Lange Gentle Clean Sulfate Free</span>
-                </a>
-                - Delikatne mycie każdego rodzaju włosów, bez wysuszania.</p>
-
-                <section>
-    <h2>Podsumowanie</h2>
-    <p>Do pełnej pielęgnacji włosów polecam następujące połączenie:</p>
-    <ul>
-        <li>
-            <strong>Codzienna pielęgnacja:</strong> 
-            Produkty <strong>2</strong> i <strong>6</strong> (nawilżenie i regeneracja).
-        </li>
-        <li>
-            <strong>Maska/Serum regenerujące:</strong> 
-            Produkt <strong>4</strong>.
-        </li>
-        <li>
-            <strong>Serum na wzrost włosów:</strong> 
-            Produkt <strong>3</strong>.
-        </li>
-        <li>
-            <strong>Zamknięcie łusek:</strong> 
-            Produkt <strong>1</strong> (z octem jabłkowym).
-        </li>
-    </ul>
-</section>
-
-
-
-                                                                <!-- WCIERKI -->
-                <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Wcierki</h2>
-                <a href="https://lyko.com/no/copenhagen-grooming/copenhagen-grooming-the-hair-activator-100-ml"
-                    style="display: inline;">
-                    <p class="mt-8" style="display: inline;">Copenhagen Grooming
-                    Hair</p>
-                </a>
-                <p style="display: inline;">- Stymuluje wzrost włosów poprzez poprawę krążenia i aktywację mieszków włosowych</p>
-                <br>
-                <a href="https://lyko.com/no/hjartligt/hjartligt-hair-growth-elixir-50-ml"
-                    style="display: inline;">
-                    <p class="mt-8" style="display: inline;">Hjärtligt</p>
-                </a>
-                <p style="display: inline;">- Badania wykazują wzrost liczby włosów o 13 500 i zwiększenie gęstości o 52%</p>
-                <br>
-                <a href="https://lyko.com/no/the-ordinary/the-ordinary-multi-peptide-serum-for-hai" style="display: inline;">
-                    <p class="mt-8" style="display: inline;">The Ordinary
-                    Hair</p>
-                </a>
-                <p style="display: inline;">- Serum na noc na bazie peptydów, które wspiera zdrowy wzrost włosów, zwiększając ich gęstość i grubość</p>
-                <br>
-                <a href="https://lyko.com/no/kerastase/k-rastase-serum-anti-chute-fortifiant-90-ml?gad_source=1&gclid=Cj0KCQjwv7O0BhDwARIsAC0sjWP_kwReRMAC7IgaUffz-SDdRhyTbbSHAF_rWBwJO4USiJQm6SfjKQwaAkvqEALw_wcB" style="display: inline;">
-                    <p class="mt-8" style="display: inline;">Kérastase
-                                                                Genesis</p>
-                </a>
-                <p style="display: inline;">- Kérastase z serii Genesis to serum wzmacniające przeciw wypadaniu włosów</p>
-                
-
-                                                                <!-- ODZYWKI MASKI -->
-                <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Odżywki&Maski</h2>
-
-                <b>Miejsce 1.</b><a href="./Opisy/Odżywki/Briogeo Be Gentle, Be Kind.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                <a href="https://lyko.com/no/briogeo/briogeo-be-gentle-be-kind-aloe---oat-milk-ultra-soothing-co" style="display: inline;">
-                    <span class="mt-8" style="display: inline;">Briogeo Be Gentle, Be Kind™</span>
-                </a>
-                - Delikatna, bezzapachowa odżywka z łagodzącymi składnikami, takimi jak aloes, ekstrakt z owsa i naturalne olejki, które łagodzą, odżywiają i nawilżają, dzięki czemu włosy i skóra głowy są zdrowe. </p>
-
-                <b>Miejsce 2.</b><a href="./Opisy/Odżywki/Maria Nila Heal.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                <a href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-conditioner-300" style="display: inline;">
-                    <span class="mt-8" style="display: inline;">Maria Nila Heal</span>
-                </a>
-                - Odżywka przeciwzapalna, która jednocześnie stymuluje porost włosów. Pirokton olaminy i naturalny ekstrakt z Aloe Vera leczą i zapobiegają łupieżowi i problemom skóry głowy. Witamina E, apigenina i peptydy stymulują mieszki włosowe, powodując wzmożony wzrost włosów. Kwas oleanolowy zapobiega wypadaniu włosów. Nałożyć na wilgotne włosy, pozostawić do działania i spłukać. Nadaje się do codziennego użytku</p>
-
-                <b>Miejsce 3.</b><a href="./Opisy/Odżywki/Kérastase Genesis.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                <a href="https://lyko.com/no/kerastase/k-rastase-fondant-renforcateur-200ml" style="display: inline;">
-                    <span class="mt-8" style="display: inline;">Kérastase Genesis</span>
-                </a>
-                - Ta odżywka wzmacniająca jest idealna dla osób z problemem wypadających włosów. Zawiera składniki takie jak ekstrakt z
-                imbiru i arginina, które wzmacniają włosy od nasady aż po końce, zapobiegając ich łamliwości. Nie zawiera SLS i SLES.</p>
-
-                <b>Miejsce 4.</b><a href="./Opisy/Odżywki/Maria nila Structure Repair.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                <a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-structure-repair" style="display: inline;">
-                    <span class="mt-8" style="display: inline;">Maria nila Structure Repair</span>
-                </a>
-                - Wygładzająca odżywka do włosów zniszczonych, suchych i po zabiegach chemicznych, która zmiękcza, nawilża i zapobiega elektryzowaniu się.</p>
-
-                <b>Miejsce 5.</b><a href="./Opisy/Odżywki/Maria nila Pure Volume.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                <a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-pure-volume" style="display: inline;">
-                    <span class="mt-8" style="display: inline;">Maria nila Pure Volume</span>
-                </a>
-                - Wygładzająca i lekka odżywka do cienkich i delikatnych włosów. Zmiękcza i nawilża włosy, nie obciążając ich.</p>
-
-                <b>Miejsce 6.</b><a href="./Opisy/Odżywki/Moroccanoil Hydration.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                <a href="https://lyko.com/no/moroccanoil/moroccanoil-hydration-conditioner-500ml" style="display: inline;">
-                    <span class="mt-8" style="display: inline;">Moroccanoil Hydration</span>
-                </a>
-                - Zmiękcz i rozpuść kołtuny w przesuszonych włosach za pomocą nawilżającej odżywki Moroccanoil®. Ta łagodna formuła do codziennego stosowania sprawia, że ​​włosy stają się gładsze, łatwiejsze w układaniu i łatwiejsze w stylizacji. Dodano bogaty w przeciwutleniacze olej arganowy, witaminy A i E oraz nawilżające czerwone algi dla optymalnego nawilżenia dla każdego rodzaju włosów - od włosów normalnych po suche. Odporny na kolor. Bez siarczanów, bez fosforanów i bez parabenów.</p>
-
-                <b>Miejsce 7.</b><a href="./Opisy/Odżywki/Maria Nila True Soft.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                <a href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-true-soft" style="display: inline;">
-                    <span class="mt-8" style="display: inline;">Maria Nila True Soft</span>
-                </a>
-                - Wygładzająca odżywka do włosów suchych. Nadaje włosom miękkość, dodaje nawilżenia i wzmacnia ich strukturę. Olejek arganowy przeciwdziała puszeniu się włosów, elektryzowaniu i dodaje blasku. Color Guard Complex ogranicza utratę koloru powstającą podczas mycia i obróbki cieplnej oraz chroni włosy przed promieniowaniem UV i wolnymi rodnikami.</p>
-
-                <b>Miejsce 8.</b><a href="./Opisy/Odżywki/L'Occitane Aromat.html"><button id="showDetailsBtn" class="details-btn">Skład</button></a>
-                <p>
-                <a href="https://lyko.com/no/loccitane/l-occitane-aroma-gentle---balance-conditioner" style="display: inline;">
-                    <span class="mt-8" style="display: inline;">L'Occitane Aromat</span>
-                </a>
-                - Odżywka została opracowana specjalnie dla osób często myjących włosy. Delikatna formuła szanuje naturalną równowagę skóry głowy i nadaje się do codziennego użytku. Delikatnie usuwa kołtuny i pozostawia włosy miękkie i elastyczne. Zawiera mieszankę olejków eterycznych z rumianku, lawendy, rozmarynu, cytryny i pomarańczy.</p>
-
-                <section>
-  <h2>Podsumowanie:</h2>
-  <ul>
-    <li><strong>Codzienna pielęgnacja:</strong> Produkty 1 i 2 (nawilżenie i ochrona).</li>
-    <li><strong>Maska regeneracyjna:</strong> Produkt 5.</li>
-    <li><strong>Serum stymulujące wzrost:</strong> Produkt 2 lub 7.</li>
-    <li><strong>Ochrona przed stylizacją:</strong> Produkt 3.</li>
-  </ul>
-</section>
-
-                <h2 class="text-2xl font-500 text-gray-700 mt-8 mb-4">Inne</h2>
-                <a href="https://www.naturalbeauty.no/products/dr-pen-ultima-m8-a6s-nano-nal">
-                    <p class="mt-8">Igła Dr.pen Ultima M8 i A6s</p>
-                </a>
-
-            </div>
-                                                                
-                                                                <!-- KALENDARZ -->
-            
+      <ul class="nav nav-tabs justify-content-center" id="tabs" role="tablist">
+        <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#mycie"      type="button" role="tab">Mycie&nbsp;&amp;&nbsp;Odżywianie</button></li>
+        <li class="nav-item"><button class="nav-link"         data-bs-toggle="tab" data-bs-target="#wcierki"    type="button" role="tab">Wcierki</button></li>
+        <li class="nav-item"><button class="nav-link"         data-bs-toggle="tab" data-bs-target="#zabieg"     type="button" role="tab">Zabieg</button></li>
+        <li class="nav-item"><button class="nav-link"         data-bs-toggle="tab" data-bs-target="#olejowanie" type="button" role="tab">Olejowanie</button></li>
+        <li class="nav-item"><button class="nav-link"         data-bs-toggle="tab" data-bs-target="#inne"       type="button" role="tab">Inne</button></li>
+        <li class="nav-item"><button class="nav-link"         data-bs-toggle="tab" data-bs-target="#produkty"   type="button" role="tab">Produkty</button></li>
+      </ul>
     </div>
-            
-    
+  </header>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<!-- FullCalendar -->
-<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.10.1/main.global.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@5.10.1/main.global.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@5.10.1/main.global.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
-<script src="rutyna.js"></script>
+  <!-- ====== Treść ====== -->
+  <main class="container py-5">
+    <div class="tab-content">
+
+      <!-- ===== Mycie & Odżywianie ===== -->
+      <div class="tab-pane fade show active" id="mycie" role="tabpanel">
+        <!-- Plan podstawowy -->
+        <article class="hc-card">
+          <h2 class="h4 text-center mb-4">Plan pielęgnacji włosów</h2>
+          <h3 class="h5 mt-3">Codzienna pielęgnacja:</h3>
+          <ul class="custom-list">
+            <li>Szampon 1 (nawilżenie, ochrona) lub 2 (regeneracja). <a class="details-btn"  target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-palett-shampoo-true-soft">szampon</a></li>
+            <li>Odżywka 1 (nawilżenie) lub 2 (wzmocnienie i regeneracja). <a class="details-btn"  target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-conditioner-300">odżywka</a></li>
+          </ul>
+
+          <h3 class="h5 mt-4">Maski regeneracyjne:</h3>
+          <ul class="custom-list">
+            <li>Szampon 4 + Odżywka 5 (raz w tygodniu). <a class="details-btn" target="_blank" href="https://lyko.com/no/kinessences/kinessences-gentle-shampoo--300-ml2">szampon</a> <a class="details-btn" target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-pure-volume">odżywka</a></li>
+          </ul>
+
+          <h3 class="h5 mt-4">Serum lub olejki:</h3>
+          <ul class="custom-list">
+            <li>Odżywka 7 (rozmaryn i lawenda) – wzmocnienie cebulek. <a class="details-btn" target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-true-soft">odżywka</a></li>
+            <li>Produkt 3 (szampon) lub odżywka 3 jako ochrona przed uszkodzeniami. <a class="details-btn" target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-shampoo-1000ml">szampon</a></li>
+          </ul>
+
+          <h3 class="h5 mt-4">Stylizacja i ochrona:</h3>
+          <ul class="custom-list">
+            <li>Szampon 3 + Odżywka 3 z dodatkowymi antyoksydantami i proteinami. <a class="details-btn" target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-shampoo-1000ml">szampon</a> <a class="details-btn" target="_blank" href="https://lyko.com/no/kerastase/k-rastase-fondant-renforcateur-200ml">odżywka</a></li>
+          </ul>
+        </article>
+
+        <!-- Plan dla włosów suchych -->
+        <article class="hc-card">
+          <h2 class="h4 text-center mb-4">Plan pielęgnacji włosów suchych</h2>
+
+          <h3 class="h5">1. Codzienne mycie i nawilżenie</h3>
+          <h4 class="h6 mt-3">Szampon:</h4>
+          <ul class="custom-list">
+            <li><strong>Szampon 1:</strong> gliceryna, aloes, masło sheа – intensywne nawilżenie, łagodzenie.</li>
+            <li><strong>Szampon 2:</strong> olej słonecznikowy, proteiny – wzmacnia, zapobiega łamaniu. <a class="details-btn" target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-palett-shampoo-true-soft">szampon</a></li>
+          </ul>
+
+          <h4 class="h6">Odżywka:</h4>
+          <ul class="custom-list">
+            <li><strong>Odżywka 1:</strong> gliceryna, aloes, olej jojoba.</li>
+            <li><strong>Odżywka 2:</strong> aloes&nbsp;+ olej słonecznikowy. <a class="details-btn" target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-conditioner-300">odżywka</a></li>
+          </ul>
+
+          <h3 class="h5 mt-4">2. Intensywna regeneracja (1–2 × / tydz.)</h3>
+          <h4 class="h6">Maska:</h4>
+          <ul class="custom-list">
+            <li><strong>Szampon 4:</strong> oliwa, wodorosty, bambus. <a class="details-btn" target="_blank" href="https://lyko.com/no/kinessences/kinessences-gentle-shampoo--300-ml2">szampon</a></li>
+            <li><strong>Odżywka 5:</strong> oliwa z oliwek, moringa, proteiny pszenicy. <a class="details-btn" target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-pure-volume">odżywka</a></li>
+          </ul>
+          <h4 class="h6">Olejowanie:</h4>
+          <ul class="custom-list">
+            <li><strong>Odżywka 6:</strong> olej arganowy, rumianek. <a class="details-btn" target="_blank" href="https://lyko.com/no/moroccanoil/moroccanoil-hydration-conditioner-500ml">odżywka</a></li>
+          </ul>
+
+          <h3 class="h5 mt-4">3. Ochrona przed uszkodzeniami</h3>
+          <ul class="custom-list">
+            <li><strong>Szampon 3:</strong> witamina E, olej słonecznikowy, ekstrakt z szarotki. <a class="details-btn" target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-shampoo-1000ml">szampon</a></li>
+            <li><strong>Odżywka 3:</strong> gliceryna, olej sojowy. <a class="details-btn" target="_blank" href="https://lyko.com/no/kerastase/k-rastase-fondant-renforcateur-200ml">odżywka</a></li>
+          </ul>
+
+          <h3 class="h5 mt-4">4. Nawilżenie i odżywienie na noc (1 × / tydz.)</h3>
+          <ul class="custom-list">
+            <li><strong>Odżywka 4:</strong> oliwa, moringa, bambus – nocna maska. <a class="details-btn" target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-structure-repair">odżywka</a></li>
+            <li><strong>Serum końcówek:</strong> olej jojoba (odżywka 1). <a class="details-btn" target="_blank" href="https://lyko.com/no/briogeo/briogeo-be-gentle-be-kind-aloe---oat-milk-ultra-soothing-co">odżywka</a></li>
+          </ul>
+
+          <h3 class="h5 mt-4">5. Ogólne wskazówki</h3>
+          <ul class="custom-list">
+            <li>Unikaj gorącej wody – włosy płucz letnią.</li>
+            <li>Stosuj delikatne szampony bez SLS.</li>
+            <li>Zabezpieczaj końcówki – olej jojoba / odżywka 7.</li>
+          </ul>
+
+          <h3 class="h5 mt-4">Podsumowanie produktów</h3>
+          <ul class="custom-list">
+            <li><strong>Codziennie:</strong> Szampon 1 + Odżywka 1.</li>
+            <li><strong>Regeneracja:</strong> Szampon 4 + Odżywka 5 (1-2 × / tydz.).</li>
+            <li><strong>Ochrona:</strong> Szampon 3 + Odżywka 3.</li>
+            <li><strong>Olejowanie:</strong> Odżywka 6.</li>
+            <li><strong>Noc:</strong> Odżywka 4 + serum z odżywki 1.</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- ===== Wcierki ===== -->
+      <div class="tab-pane fade" id="wcierki" role="tabpanel">
+        <!-- Hjärtligt -->
+        <article class="hc-card">
+          <h2 class="h4 text-center mb-4">Wcierka – Hjärtligt</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <p class="fw-semibold">Częstotliwość stosowania:</p>
+              <ul class="custom-list small mb-4">
+                <li>2-3 × / tydz. dla optymalnych rezultatów.</li>
+                <li>Codziennie przy bardzo osłabionych włosach (krótkotrwale).</li>
+                <li>1-2 × / tydz. dla włosów normalnych.</li>
+                <li>Obserwuj reakcję – zmniejsz częstotliwość przy podrażnieniu.</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <p class="fw-semibold">Sposób użycia:</p>
+              <ul class="custom-list small mb-4">
+                <li>Umyj włosy, osusz ręcznikiem.</li>
+                <li>Podziel włosy na sekcje.</li>
+                <li>Nałóż wcierkę, wmasuj opuszkami palców 1-2 min.</li>
+                <li>Nie spłukuj – pozwól składnikom się wchłonąć.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Kérastase Genesis -->
+        <article class="hc-card">
+          <h2 class="h4 text-center mb-4">Wcierka – Kérastase Genesis Serum</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <p class="fw-semibold">Częstotliwość stosowania:</p>
+              <ul class="custom-list small mb-4">
+                <li>Codziennie przez 3 miesiące, potem 3-4 × / tydz.</li>
+                <li>Można stosować na mokre lub suche włosy.</li>
+                <li>Przy intensywnej kuracji – 2 × / dobę.</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <p class="fw-semibold">Sposób użycia:</p>
+              <ul class="custom-list small mb-4">
+                <li>Umyj i osusz ręcznikiem skórę głowy.</li>
+                <li>Podziel włosy na sekcje.</li>
+                <li>Nałóż 3-4 krople serum w każdej sekcji, wmasuj.</li>
+                <li>Pozostaw bez spłukiwania – stylizuj jak zwykle.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Copenhagen Grooming -->
+        <article class="hc-card">
+          <h2 class="h4 text-center mb-4">Wcierka – Copenhagen Grooming Hair</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <p class="fw-semibold">Częstotliwość stosowania:</p>
+              <ul class="custom-list small mb-4">
+                <li>1-2 × / dobę wg zaleceń producenta.</li>
+                <li>Dostosuj do reakcji skóry i włosów.</li>
+                <li>Efekty po kilku tygodniach regularnego użycia.</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <p class="fw-semibold">Sposób użycia:</p>
+              <ul class="custom-list small mb-4">
+                <li>Na czystą skórę głowy (lekko wilgotną lub suchą).</li>
+                <li>Skoncentruj się na problematycznych obszarach.</li>
+                <li>Wmasuj 1-2 minuty, nie spłukuj.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- ===== Zabieg ===== -->
+      <div class="tab-pane fade" id="zabieg" role="tabpanel">
+        <article class="hc-card">
+          <h2 class="h4 text-center mb-4">Iglowanie skóry głowy (Dermapen)</h2>
+          <p class="mb-4">Mikronakłuwanie może stymulować wzrost włosów i poprawiać zdrowie skóry głowy. Poniżej szczegółowy przewodnik.</p>
+
+          <h3 class="h5 mt-3">Przygotowanie</h3>
+          <ul class="custom-list">
+            <li><strong>Sterylizacja:</strong> używaj jednorazowych, sterylnych igieł.</li>
+            <li><strong>Czysta skóra:</strong> dokładnie umyj skórę głowy.</li>
+            <li><strong>Znieczulenie:</strong> opcjonalnie krem znieczulający.</li>
+          </ul>
+
+          <h3 class="h5 mt-3">Procedura</h3>
+          <ol class="custom-list" style="list-style:decimal">
+            <li>Ustaw długość igieł 0,25-1,5 mm (zwykle 0,5-1,5 mm).</li>
+            <li>Przesuwaj dermapen w liniach poziomych, pionowych, ukośnych.</li>
+            <li>Zabieg 10-20 min — równomiernie na cały obszar.</li>
+          </ol>
+
+          <h3 class="h5 mt-3">Po zabiegu</h3>
+          <ul class="custom-list">
+            <li>Nie myj głowy 24 h.</li>
+            <li>Stosuj delikatną pielęgnację, unikaj słońca.</li>
+          </ul>
+
+          <h3 class="h5 mt-3">Odstępy czasowe</h3>
+          <ul class="custom-list">
+            <li>Pierwszy miesiąc: co 7-14 dni.</li>
+            <li>Następnie: raz w miesiącu dla podtrzymania efektów.</li>
+          </ul>
+
+          <h3 class="h5 mt-3">Korzyści i ryzyko</h3>
+          <ul class="custom-list">
+            <li><strong>Korzyści:</strong> lepsze krążenie, stymulacja kolagenu.</li>
+            <li><strong>Ryzyko:</strong> podrażnienia, infekcje przy braku higieny.</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- ===== Olejowanie ===== -->
+      <div class="tab-pane fade" id="olejowanie" role="tabpanel">
+        <article class="hc-card">
+          <h2 class="h4 text-center mb-4">Olejowanie włosów – przewodnik</h2>
+          <p class="mb-4">Olejowanie to skuteczna metoda poprawy kondycji, nawilżenia i blasku włosów.</p>
+
+          <h3 class="h5">Jak olejować włosy?</h3>
+          <ol class="custom-list" style="list-style:decimal">
+            <li><strong>Wybierz olej</strong> – kokosowy, rycynowy, arganowy, jojoba, migdałowy.</li>
+            <li><strong>Aplikacja</strong> – lekko podgrzej olej, nałóż od skóry głowy po końcówki.</li>
+            <li><strong>Czas</strong> – minimum 1 h, najlepiej cała noc.</li>
+            <li><strong>Zmywanie</strong> – łagodny szampon (czasem 2-krotne mycie) + odżywka.</li>
+          </ol>
+
+          <h3 class="h5 mt-3">Jak często?</h3>
+          <ul class="custom-list">
+            <li>Suche, zniszczone włosy: 2-3 × / tydz.</li>
+            <li>Normalne: 1-2 × / tydz.</li>
+            <li>Tłuste: 1 × / tydz. lub rzadziej.</li>
+          </ul>
+
+          <h3 class="h5 mt-3">Wskazówki</h3>
+          <ul class="custom-list">
+            <li>Kluczowa jest regularność.</li>
+            <li>Łącz olejowanie z maskami, dobrą dietą.</li>
+            <li>Ogranicz wysoką temperaturę stylizacji.</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- ===== Inne (LLLT) ===== -->
+      <div class="tab-pane fade" id="inne" role="tabpanel">
+        <article class="hc-card">
+          <h2 class="h4 text-center mb-4">Naświetlanie światłem podczerwonym (LLLT)</h2>
+          <p class="mb-4">Terapia niskopoziomowym światłem może stymulować mieszki włosowe i poprawiać krążenie.</p>
+
+          <h3 class="h5">Krok 1: Przygotowanie</h3>
+          <ul class="custom-list">
+            <li>Wybierz urządzenie (czapka, opaska, grzebień laserowy).</li>
+            <li>Umyj włosy i skórę głowy.</li>
+          </ul>
+
+          <h3 class="h5 mt-3">Krok 2: Naświetlanie</h3>
+          <ol class="custom-list" style="list-style:decimal">
+            <li>Sesje 10-30 min, 3-4 × / tydz.</li>
+            <li>Trzymaj urządzenie zgodnie z instrukcją producenta.</li>
+          </ol>
+
+          <h3 class="h5 mt-3">Krok 3: Po naświetlaniu</h3>
+          <ul class="custom-list">
+            <li>Możesz zastosować delikatny środek nawilżający.</li>
+            <li>Unikaj agresywnych zabiegów w dniu terapii.</li>
+          </ul>
+
+          <h3 class="h5 mt-3">Środki ostrożności</h3>
+          <ul class="custom-list">
+            <li>Konsultacja z dermatologiem lub trychologiem.</li>
+            <li>Nie kieruj światła w oczy.</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- ===== Produkty ===== -->
+      <div class="tab-pane fade" id="produkty" role="tabpanel">
+        <article class="hc-card">
+          <h2 class="h4 mb-4">Szampony</h2>
+
+          <p><strong>Miejsce 1.</strong> <a href="./Opisy/Szampony/Biovene_Moisture_Volume.html" class="details-btn">Skład</a></p>
+          <p><a target="_blank" href="https://lyko.com/no/biovene/biovene-moisture-volume-biotin---apple-cider-solid-shampoo-b">Biovene&nbsp;Moisture&nbsp;Volume</a> – delikatny szampon do codziennego stosowania, odpowiedni dla włosów farbowanych.</p>
+
+          <p><strong>Miejsce 2.</strong> <a href="./Opisy/Szampony/Maria_Nila_True_Soft.html" class="details-btn">Skład</a></p>
+          <p><a target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-palett-shampoo-true-soft">Maria Nila&nbsp;True Soft</a> – bezsiarczanowy, z olejem arganowym, wegański.</p>
+
+          <p><strong>Miejsce 3.</strong> <a href="./Opisy/Szampony/Maria nila Head Hair Heal.html" class="details-btn">Skład</a></p>
+          <p><a target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-shampoo-1000ml">Maria Nila Hair Heal</a> – przeciwzapalny, stymuluje wzrost włosów.</p>
+
+          <p><strong>Miejsce 4.</strong> <a href="./Opisy/Szampony/Kinessences.html" class="details-btn">Skład</a></p>
+          <p><a target="_blank" href="https://lyko.com/no/kinessences/kinessences-gentle-shampoo--300-ml2">Kinessences Restore</a> – głęboko odbudowuje zniszczone włosy.</p>
+
+          <p><strong>Miejsce 5.</strong> <a href="./Opisy/Szampony/L'Occitane Aromat.html" class="details-btn">Skład</a></p>
+          <p><a target="_blank" href="https://lyko.com/no/loccitane/l-occitane-aroma-gentle---balance-shampoo">L'Occitane Aroma Gentle</a> – micelarny szampon z olejkami eterycznymi.</p>
+
+          <p><strong>Miejsce 6.</strong> <a href="./Opisy/Szampony/Rituals The Ritual Of Sakura.html" class="details-btn">Skład</a></p>
+          <p><a target="_blank" href="https://lyko.com/no/rituals/ritual-of-sakura-shampoo-250-ml">Rituals The Ritual Of Sakura</a> – do codziennego stosowania dla cienkich włosów.</p>
+
+          <p><strong>Miejsce 7.</strong> <a href="./Opisy/Szampony/Larsson & Lange Gentle Clean Sulfate Free.html" class="details-btn">Skład</a></p>
+          <p><a target="_blank" href="https://lyko.com/no/larsson--lange/larsson---lange-gentle-clean-sulfate-free-shampoo-300ml">Larsson&nbsp;&amp;&nbsp;Lange&nbsp;Gentle&nbsp;Clean</a> – delikatne, bez SLS.</p>
+
+          <h3 class="h5 mt-5">Podsumowanie</h3>
+          <ul class="custom-list">
+            <li><strong>Codzienna pielęgnacja:</strong> Produkty 2 &amp; 6.</li>
+            <li><strong>Maska/Serum:</strong> Produkt 4.</li>
+            <li><strong>Serum na wzrost:</strong> Produkt 3.</li>
+            <li><strong>Zamknięcie łusek:</strong> Produkt 1.</li>
+          </ul>
+
+          <hr class="my-4">
+
+          <h2 class="h4 mb-4">Wcierki</h2>
+          <p><a target="_blank" href="https://lyko.com/no/copenhagen-grooming/copenhagen-grooming-the-hair-activator-100-ml">Copenhagen Grooming Hair</a> – stymuluje wzrost, poprawia krążenie.</p>
+          <p><a target="_blank" href="https://lyko.com/no/hjartligt/hjartligt-hair-growth-elixir-50-ml">Hjärtligt</a> – wzrost liczby włosów o 13 500.</p>
+          <p><a target="_blank" href="https://lyko.com/no/the-ordinary/the-ordinary-multi-peptide-serum-for-hai">The Ordinary Hair</a> – peptydowe serum na noc.</p>
+          <p><a target="_blank" href="https://lyko.com/no/kerastase/k-rastase-serum-anti-chute-fortifiant-90-ml">Kérastase Genesis</a> – serum wzmacniające przeciw wypadaniu.</p>
+
+          <hr class="my-4">
+
+          <h2 class="h4 mb-4">Odżywki & Maski</h2>
+          <p><strong>Miejsce 1.</strong> <a href="./Opisy/Odżywki/Briogeo Be Gentle, Be Kind.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/briogeo/briogeo-be-gentle-be-kind-aloe---oat-milk-ultra-soothing-co">Briogeo Be Gentle, Be Kind</a> – bezzapachowa, łagodząca.</p>
+          <p><strong>Miejsce 2.</strong> <a href="./Opisy/Odżywki/Maria Nila Heal.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-conditioner-300">Maria Nila Heal</a> – przeciwzapalna, stymuluje porost.</p>
+          <p><strong>Miejsce 3.</strong> <a href="./Opisy/Odżywki/Kérastase Genesis.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/kerastase/k-rastase-fondant-renforcateur-200ml">Kérastase Genesis</a> – wzmacniająca przeciw łamliwości.</p>
+          <p><strong>Miejsce 4.</strong> <a href="./Opisy/Odżywki/Maria nila Structure Repair.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-structure-repair">Maria Nila Structure Repair</a> – do włosów zniszczonych.</p>
+          <p><strong>Miejsce 5.</strong> <a href="./Opisy/Odżywki/Maria nila Pure Volume.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-pure-volume">Maria Nila Pure Volume</a> – lekka, nadaje objętość.</p>
+          <p><strong>Miejsce 6.</strong> <a href="./Opisy/Odżywki/Moroccanoil Hydration.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/moroccanoil/moroccanoil-hydration-conditioner-500ml">Moroccanoil Hydration</a> – olej arganowy, witaminy A &amp; E.</p>
+          <p><strong>Miejsce 7.</strong> <a href="./Opisy/Odżywki/Maria Nila True Soft.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-true-soft">Maria Nila True Soft</a> – do włosów suchych.</p>
+          <p><strong>Miejsce 8.</strong> <a href="./Opisy/Odżywki/L'Occitane Aromat.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/loccitane/l-occitane-aroma-gentle---balance-conditioner">L'Occitane Aroma</a> – codzienne stosowanie.</p>
+
+          <h3 class="h5 mt-5">Podsumowanie</h3>
+          <ul class="custom-list">
+            <li><strong>Codzienna pielęgnacja:</strong> Produkty 1 &amp; 2.</li>
+            <li><strong>Maska regeneracyjna:</strong> Produkt 5.</li>
+            <li><strong>Serum stymulujące wzrost:</strong> Produkt 2 lub 7.</li>
+            <li><strong>Ochrona przed stylizacją:</strong> Produkt 3.</li>
+          </ul>
+
+          <hr class="my-4">
+
+          <h2 class="h4 mb-2">Inne</h2>
+          <p><a target="_blank" href="https://www.naturalbeauty.no/products/dr-pen-ultima-m8-a6s-nano-nal">Igły Dr.pen Ultima M8 / A6s</a></p>
+        </article>
+      </div>
+
+      <!-- ===== Kalendarz ===== -->
+      <div class="tab-pane fade" id="kal" role="tabpanel">
+        <article class="hc-card">
+          <h2 class="h4 text-center mb-4">Kalendarz pielęgnacji</h2>
+          <div id="calendar"></div>
+        </article>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Back-to-top -->
+  <button id="backToTop" class="btn btn-primary rounded-circle">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Skrypty -->
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.10.1/main.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@5.10.1/main.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@5.10.1/main.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* === FullCalendar === */
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.getElementById('calendar');
+      if (el) {
+        const calendar = new FullCalendar.Calendar(el, {
+          plugins: ['dayGrid', 'interaction'],
+          initialView: 'dayGridMonth',
+          locale: 'pl',
+          height: 'auto',
+          headerToolbar: { left: 'prev,next today', center: 'title', right: '' },
+          dateClick: info => alert('Kliknięto: ' + info.dateStr)
+        });
+        calendar.render();
+      }
+    });
+
+    /* === Back-to-top === */
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    btt.addEventListener('click', () =>
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    );
+  </script>
 </body>
-
 </html>
