@@ -17,7 +17,7 @@ body {
   line-height: 1.6;
   color: var(--text-dark);
   background: #f8f9fa;
-  background-image: url(/tlo.png);
+  background-image: url(./tlo.png);
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
