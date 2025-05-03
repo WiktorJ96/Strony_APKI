@@ -1,8 +1,8 @@
 /* ====== Zmienne kolorów ====== */
 :root {
-  --primary: #3498db;
-  --primary-dark: #2980b9;
-  --accent: #e74c3c;
+  --primary: #79c4f6;
+  --primary-dark: #5394bf;
+  --accent: #3c8fe7;
   --text-dark: #2c3e50;
   --card-bg: #fefefe;
   --card-border: #ddebf7;
@@ -88,6 +88,8 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: .5px;
   cursor: pointer;
   transition: all .3s;
+  margin-left: 4px;
+  margin-bottom: 4px;
 }
 .details-btn:hover {
   background: var(--primary);
