@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dziennik Pielęgnacji Włosów</title>
+  <title>Pielęgnacja Włosów</title>
 
   <!-- Google Fonts & Ikony -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -12,6 +12,14 @@
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
+  <!-- Tailwind -->
+   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.10.1/main.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@5.10.1/main.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="rutyna.css">
 
 </head>
@@ -20,7 +28,7 @@
   <!-- ====== Nagłówek & zakładki ====== -->
   <header class="bg-white shadow-sm sticky-top">
     <div class="container py-3">
-      <h1 class="text-center display-6 mb-3">Dziennik Pielęgnacji Włosów</h1>
+      <h1 class="text-center display-6 mb-3">Pielęgnacja Włosów</h1>
 
       <ul class="nav nav-tabs justify-content-center" id="tabs" role="tablist">
         <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#mycie"      type="button" role="tab">Mycie&nbsp;&amp;&nbsp;Odżywianie</button></li>
@@ -29,6 +37,9 @@
         <li class="nav-item"><button class="nav-link"         data-bs-toggle="tab" data-bs-target="#olejowanie" type="button" role="tab">Olejowanie</button></li>
         <li class="nav-item"><button class="nav-link"         data-bs-toggle="tab" data-bs-target="#inne"       type="button" role="tab">Inne</button></li>
         <li class="nav-item"><button class="nav-link"         data-bs-toggle="tab" data-bs-target="#produkty"   type="button" role="tab">Produkty</button></li>
+        <li class="nav-item">
+                <a class="nav-link" id="suple-tab" data-bs-toggle="tab" href="#suple" type="button" role="tab" aria-controls="suple" aria-selected="false">Suplementacja</a>
+        </li>
       </ul>
     </div>
   </header>
@@ -344,15 +355,104 @@
 
           <hr class="my-4">
 
-          <h2 class="h4 mb-4">Odżywki & Maski</h2>
-          <p><strong>Miejsce 1.</strong> <a href="./Opisy/Odżywki/Briogeo Be Gentle, Be Kind.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/briogeo/briogeo-be-gentle-be-kind-aloe---oat-milk-ultra-soothing-co">Briogeo Be Gentle, Be Kind</a> – bezzapachowa, łagodząca.</p>
-          <p><strong>Miejsce 2.</strong> <a href="./Opisy/Odżywki/Maria Nila Heal.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-conditioner-300">Maria Nila Heal</a> – przeciwzapalna, stymuluje porost.</p>
-          <p><strong>Miejsce 3.</strong> <a href="./Opisy/Odżywki/Kérastase Genesis.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/kerastase/k-rastase-fondant-renforcateur-200ml">Kérastase Genesis</a> – wzmacniająca przeciw łamliwości.</p>
-          <p><strong>Miejsce 4.</strong> <a href="./Opisy/Odżywki/Maria nila Structure Repair.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-structure-repair">Maria Nila Structure Repair</a> – do włosów zniszczonych.</p>
-          <p><strong>Miejsce 5.</strong> <a href="./Opisy/Odżywki/Maria nila Pure Volume.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-pure-volume">Maria Nila Pure Volume</a> – lekka, nadaje objętość.</p>
-          <p><strong>Miejsce 6.</strong> <a href="./Opisy/Odżywki/Moroccanoil Hydration.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/moroccanoil/moroccanoil-hydration-conditioner-500ml">Moroccanoil Hydration</a> – olej arganowy, witaminy A &amp; E.</p>
-          <p><strong>Miejsce 7.</strong> <a href="./Opisy/Odżywki/Maria Nila True Soft.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-true-soft">Maria Nila True Soft</a> – do włosów suchych.</p>
-          <p><strong>Miejsce 8.</strong> <a href="./Opisy/Odżywki/L'Occitane Aromat.html" class="details-btn">Skład</a> – <a target="_blank" href="https://lyko.com/no/loccitane/l-occitane-aroma-gentle---balance-conditioner">L'Occitane Aroma</a> – codzienne stosowanie.</p>
+          <h2 class="h4 mb-4">Odżywki &amp; Maski</h2>
+
+<!-- Miejsce 1 -->
+<p><strong>Miejsce 1.</strong>
+   <a href="./Opisy/Odżywki/Briogeo Be Gentle, Be Kind.html" class="details-btn">Skład</a>
+</p>
+<p>
+  <a target="_blank"
+     href="https://lyko.com/no/briogeo/briogeo-be-gentle-be-kind-aloe---oat-milk-ultra-soothing-co">
+    Briogeo&nbsp;Be&nbsp;Gentle,&nbsp;Be&nbsp;Kind
+  </a>
+  – bezzapachowa, łagodząca.
+</p>
+
+<!-- Miejsce 2 -->
+<p><strong>Miejsce 2.</strong>
+   <a href="./Opisy/Odżywki/Maria Nila Heal.html" class="details-btn">Skład</a>
+</p>
+<p>
+  <a target="_blank"
+     href="https://lyko.com/no/maria-nila/maria-nila-headhairheal-conditioner-300">
+    Maria&nbsp;Nila&nbsp;Heal
+  </a>
+  – przeciwzapalna, stymuluje porost.
+</p>
+
+<!-- Miejsce 3 -->
+<p><strong>Miejsce 3.</strong>
+   <a href="./Opisy/Odżywki/Kérastase Genesis.html" class="details-btn">Skład</a>
+</p>
+<p>
+  <a target="_blank"
+     href="https://lyko.com/no/kerastase/k-rastase-fondant-renforcateur-200ml">
+    Kérastase&nbsp;Genesis
+  </a>
+  – wzmacniająca przeciw łamliwości.
+</p>
+
+<!-- Miejsce 4 -->
+<p><strong>Miejsce 4.</strong>
+   <a href="./Opisy/Odżywki/Maria nila Structure Repair.html" class="details-btn">Skład</a>
+</p>
+<p>
+  <a target="_blank"
+     href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-structure-repair">
+    Maria&nbsp;Nila&nbsp;Structure&nbsp;Repair
+  </a>
+  – do włosów zniszczonych.
+</p>
+
+<!-- Miejsce 5 -->
+<p><strong>Miejsce 5.</strong>
+   <a href="./Opisy/Odżywki/Maria nila Pure Volume.html" class="details-btn">Skład</a>
+</p>
+<p>
+  <a target="_blank"
+     href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-pure-volume">
+    Maria&nbsp;Nila&nbsp;Pure&nbsp;Volume
+  </a>
+  – lekka, nadaje objętość.
+</p>
+
+<!-- Miejsce 6 -->
+<p><strong>Miejsce 6.</strong>
+   <a href="./Opisy/Odżywki/Moroccanoil Hydration.html" class="details-btn">Skład</a>
+</p>
+<p>
+  <a target="_blank"
+     href="https://lyko.com/no/moroccanoil/moroccanoil-hydration-conditioner-500ml">
+    Moroccanoil&nbsp;Hydration
+  </a>
+  – olej arganowy, witaminy&nbsp;A&nbsp;&amp;&nbsp;E.
+</p>
+
+<!-- Miejsce 7 -->
+<p><strong>Miejsce 7.</strong>
+   <a href="./Opisy/Odżywki/Maria Nila True Soft.html" class="details-btn">Skład</a>
+</p>
+<p>
+  <a target="_blank"
+     href="https://lyko.com/no/maria-nila/maria-nila-palett-conditioner-true-soft">
+    Maria&nbsp;Nila&nbsp;True&nbsp;Soft
+  </a>
+  – do włosów suchych.
+</p>
+
+<!-- Miejsce 8 -->
+<p><strong>Miejsce 8.</strong>
+   <a href="./Opisy/Odżywki/L'Occitane Aromat.html" class="details-btn">Skład</a>
+</p>
+<p>
+  <a target="_blank"
+     href="https://lyko.com/no/loccitane/l-occitane-aroma-gentle---balance-conditioner">
+    L'Occitane&nbsp;Aroma&nbsp;Gentle
+  </a>
+  – do codziennego stosowania.
+</p>
+
 
           <h3 class="h5 mt-5">Podsumowanie</h3>
           <ul class="custom-list">
@@ -369,13 +469,111 @@
         </article>
       </div>
 
-      <!-- ===== Kalendarz ===== -->
-      <div class="tab-pane fade" id="kal" role="tabpanel">
-        <article class="hc-card">
-          <h2 class="h4 text-center mb-4">Kalendarz pielęgnacji</h2>
-          <div id="calendar"></div>
-        </article>
-      </div>
+                                                                              <!-- Sekcja suplementacji wpływającej na wzrost i zapobieganie wypadaniu włosów -->
+<div class="tab-pane fade" id="suple" role="tabpanel" aria-labelledby="suple-tab">
+    <div class="container mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+        <!-- Nagłówek sekcji -->
+        <h1 class="text-3xl font-500 text-center text-gray-800 mb-6">Suplementacja</h1>
+
+        <!-- Grid z suplementami -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Biotyna -->
+            <div class="p-6 bg-gray-100 rounded-lg shadow-inner">
+                <h2 class="text-xl font-semibold mb-2">Biotyna (witamina&nbsp;B7) — 10&nbsp;mg</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Wspiera tworzenie keratyny (białka włosa). <em>Źródła:</em> jajka, orzechy.
+                </p>
+            </div>
+
+            <!-- Cynk -->
+            <div class="p-6 bg-gray-100 rounded-lg shadow-inner">
+                <h2 class="text-xl font-semibold mb-2">Cynk (zinc) — 30&nbsp;mg</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Pomaga w regeneracji skóry głowy i reguluje sebum. <em>Źródła:</em> pestki dyni, fasola.
+                </p>
+            </div>
+
+            <!-- Miedź -->
+            <div class="p-6 bg-gray-100 rounded-lg shadow-inner">
+                <h2 class="text-xl font-semibold mb-2">Miedź (copper) — 4,5&nbsp;mg</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Bierze udział w produkcji melaniny (barwnika włosa) i kolagenu.
+                    <em>Źródła:</em> wątróbka, kakao.
+                </p>
+            </div>
+
+            <!-- Selen -->
+            <div class="p-6 bg-gray-100 rounded-lg shadow-inner">
+                <h2 class="text-xl font-semibold mb-2">Selen (selenium) — 5&nbsp;mg</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Silny przeciwutleniacz; chroni mieszki przed stresem oksydacyjnym. <span class="text-xs">Uwaga: dawka powyżej 400&nbsp;µg dziennie może być toksyczna – skonsultuj plan z&nbsp;lekarzem.</span>
+                </p>
+            </div>
+
+            <!-- Ekstrakt skrzypu -->
+            <div class="p-6 bg-gray-100 rounded-lg shadow-inner">
+                <h2 class="text-xl font-semibold mb-2">Ekstrakt&nbsp;skrzypu (horsetail&nbsp;extract) — 100&nbsp;mg</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Bogaty w krzemionkę (silica), która wzmacnia strukturę włosa.
+                </p>
+            </div>
+
+            <!-- Laktoferyna -->
+            <div class="p-6 bg-gray-100 rounded-lg shadow-inner">
+                <h2 class="text-xl font-semibold mb-2">Laktoferyna (lactoferrin) — 100&nbsp;mg</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Białko wiążące żelazo; może wspierać wzrost włosa przez zmniejszanie stanu zapalnego skóry głowy.
+                </p>
+            </div>
+
+            <!-- Saw palmetto -->
+            <div class="p-6 bg-gray-100 rounded-lg shadow-inner">
+                <h2 class="text-xl font-semibold mb-2">Saw&nbsp;palmetto — 320&nbsp;mg</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Naturalny inhibitor DHT (dihydrotestosteronu), hormonu związanego z łysieniem androgenowym.
+                </p>
+            </div>
+
+            <!-- Omega 3-6-9 -->
+            <div class="p-6 bg-gray-100 rounded-lg shadow-inner">
+                <h2 class="text-xl font-semibold mb-2">Omega&nbsp;3‑6‑9 — 1&nbsp;000&nbsp;mg</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Równoważy profil lipidowy skóry, działa przeciwzapalnie i nawilżająco.
+                </p>
+            </div>
+
+            <!-- Witaminy ADEK -->
+            <div class="p-6 bg-gray-100 rounded-lg shadow-inner">
+                <h2 class="text-xl font-semibold mb-2">Witaminy&nbsp;ADEK (kompleks) — wg&nbsp;RWS*</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Witaminy rozpuszczalne w&nbsp;tłuszczach; A i&nbsp;E jako antyoksydanty, D dla cyklu wzrostu,
+                    K wspiera krążenie w&nbsp;skórze głowy.<br>
+                    <span class="text-xs">*RWS – Referencyjna Wartość Spożycia</span>
+                </p>
+            </div>
+
+            <!-- L-karnityna -->
+            <div class="p-6 bg-gray-100 rounded-lg shadow-inner">
+                <h2 class="text-xl font-semibold mb-2">L‑karnityna (L‑carnitine) — 500&nbsp;mg</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Dostarcza energię mieszkom włosowym, przyspieszając metabolizm kwasów tłuszczowych.
+                </p>
+            </div>
+
+            <!-- L. plantarum 299v -->
+            <div class="p-6 bg-gray-100 rounded-lg shadow-inner">
+                <h2 class="text-xl font-semibold mb-2">L.&nbsp;plantarum&nbsp;299v — ≥1×10<sup>9</sup>&nbsp;jtk*</h2>
+                <p class="text-gray-700 text-sm leading-relaxed">
+                    Probiotyk wspomagający wchłanianie składników odżywczych.
+                    <span class="text-xs">*jtk – jednostki&nbsp;tworzące&nbsp;kolonie</span>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
 
     </div>
   </main>
